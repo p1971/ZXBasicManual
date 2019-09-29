@@ -1,0 +1,255 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Appendix B</TITLE>
+</HEAD>
+<BODY>
+<H2>APPENDIX B</H2>
+<H3>Reports</H3>
+<P>These appear at the bottom of the screen whenever the computer
+stops executing some BASIC, and explain why it stopped, whether
+for a natural reason, or because an error occurred.</P>
+<P>The report has a code number or letter so that you can refer
+to the table here, a brief message explaining what happened and
+the line number and statement number within that line where it
+stopped. (A command is shown as line 0. Within a line, statement
+1 is at the beginning, statement 2 comes after the first colon or
+THEN, and so on.) </P>
+<P>The behaviour of CONTINUE depends very much on the reports.
+Normally, CONTINUE goes to the line and statement specified in
+the last report, but there are exceptions with reports 0, 9 and D
+(also see Appendix C). </P>
+<P>Here is a table showing all the reports. It also tells you in
+what circumstances the report can occur, and this refers you to
+Appendix C. For instance error A Invalid argument can occur with
+SQR, IN, ACS and ASN and the entries for these in Appendix C tell
+you exactly what arguments are invalid.</P>
+<TABLE BORDER="0">
+<TR>
+<TD>Code</TD>
+<TD>Meaning</TD>
+<TD>Situations </TD>
+</TR>
+<TR>
+<TD VALIGN="top">0</TD>
+<TD VALIGN="top">0K</TD>
+<TD>Any<BR>
+Successful completion, or jump to a line number bigger
+than any existing. This report does not change the line
+and statement jumped to by CONTINUE. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">1</TD>
+<TD VALIGN="top">NEXT without FOR</TD>
+<TD>NEXT<BR>
+The control variable does not exist (it has not been set
+up by a FOR statement), but there is an ordinary variable
+with the same name. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">2</TD>
+<TD VALIGN="top">Variable not found</TD>
+<TD>Any<BR>
+For a simple variable this will happen if the variable is
+used before it has been assigned to in a LET, READ or
+INPUT statement or loaded from tape or set up in a FOR
+statement. For a subscripted variable it will happen if
+the variable is used before it has been dimensioned in a
+DIM statement or loaded from tape. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">3</TD>
+<TD VALIGN="top">Subscript wrong</TD>
+<TD>Subscripted variables, Substrings<BR>
+A subscript is beyond the dimension of the array, or
+there are the wrong number of subscripts. If the
+subscript is negative or bigger than 65535, then error B
+will result. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">4</TD>
+<TD VALIGN="top">Out of memory</TD>
+<TD VALIGN="top">LET, INPUT, FOR, DIM, GO SUB, LOAD,
+MERGE.<BR>
+Sometimes during expression evaluation. There is not
+enough room in the computer for what you are trying to
+do. If the computer really seems to be stuck in this
+state, you may have to clear out the command line using
+DELETE and then delete a program line or two (with the
+intention of putting them back afterwards) to give
+yourself room to manoeuvre with - say - CLEAR. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">5</TD>
+<TD VALIGN="top">Out of screen</TD>
+<TD VALIGN="top">INPUT, PRINT AT<BR>
+An INPUT statement has tried to generate more than 23
+lines in the lower half of the screen. Also occurs with
+PRINT AT 22, . . . </TD>
+</TR>
+<TR>
+<TD VALIGN="top">6</TD>
+<TD VALIGN="top">Number too big</TD>
+<TD VALIGN="top">Any arithmetic<BR>
+Calculations have led to a number greater than about
+1038. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">7</TD>
+<TD VALIGN="top">RETURN without GO SUB</TD>
+<TD VALIGN="top">RETURN<BR>
+There has been one more RETURN than there were GO SUBs. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">8</TD>
+<TD VALIGN="top">End of file</TD>
+<TD VALIGN="top">Microdrive, etc, operations
+[undocumented] </TD>
+</TR>
+<TR>
+<TD VALIGN="top">9</TD>
+<TD VALIGN="top">STOP statement</TD>
+<TD VALIGN="top">STOP<BR>
+After this, CONTINUE will not repeat the STOP, but
+carries on with the statement after. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">A</TD>
+<TD VALIGN="top">Invalid argument</TD>
+<TD VALIGN="top">SQR, LN, ASN, ACS, USR (with string
+argument)<BR>
+The argument for a function is no good for some reason. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">B</TD>
+<TD VALIGN="top">Integer out of range</TD>
+<TD VALIGN="top">RUN, RANDOMIZE, POKE, DIM, GO TO, GO
+SUB, LIST, LLIST, PAUSE, PLOT, CHR$, PEEK, USR (with
+numeric argument), Array access<BR>
+When an integer is required, the floating point argument
+is rounded to the nearest integer. If this is outside a
+suitable range then error B results. For array access,
+see also Error 3. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">C</TD>
+<TD VALIGN="top">Nonsense in BASIC</TD>
+<TD VALIGN="top">VAL, VAL$<BR>
+The text of the (string) argument does not form a valid
+expression. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">D</TD>
+<TD VALIGN="top">BREAK - CONT repeats</TD>
+<TD VALIGN="top">LOAD, SAVE, VERIFY, MERGE, LPRINT,
+LLIST, COPY.<BR>
+Also when the computer asks scroll? and you type N, SPACE
+or STOP. BREAK was pressed during some peripheral
+operation. The behaviour of CONTINUE after this report is
+normal in that it repeats the statement. Compare with
+report L. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">E</TD>
+<TD VALIGN="top">Out of DATA</TD>
+<TD VALIGN="top">READ<BR>
+You have tried to READ past the end of the DATA list. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">F</TD>
+<TD VALIGN="top">Invalid file name</TD>
+<TD VALIGN="top">SAVE<BR>
+SAVE with name empty or longer than 10 characters . </TD>
+</TR>
+<TR>
+<TD VALIGN="top">G</TD>
+<TD VALIGN="top">No room for line</TD>
+<TD VALIGN="top">Entering a line into the program<BR>
+There is not enough room left in memory to accommodate
+the new program line. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">H</TD>
+<TD VALIGN="top">STOP in INPUT</TD>
+<TD VALIGN="top">INPUT<BR>
+Some INPUT data started with STOP, or - for INPUT LINE -
+was pressed. Unlike the case with report 9, after report
+H CONTINUE will behave normally, by repeating the INPUT
+statement. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">I</TD>
+<TD VALIGN="top">FOR without NEXT</TD>
+<TD VALIGN="top">FOR<BR>
+There was a FOR loop to be executed no times (e.g. FOR n=
+1 TO 0) and the corresponding NEXT statement could not be
+found. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">J</TD>
+<TD VALIGN="top">Invalid I/O device</TD>
+<TD VALIGN="top">Microdrive, etc, operations<BR>
+[undocumented] </TD>
+</TR>
+<TR>
+<TD VALIGN="top">K</TD>
+<TD VALIGN="top">Invalid colour</TD>
+<TD VALIGN="top">INK, PAPER, BORDER, FLASH, BRIGHT,
+INVERSE, OVER; also after one of the corresponding
+control characters.<BR>
+The number specified is not an appropriate value. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">L</TD>
+<TD VALIGN="top">BREAK into program</TD>
+<TD VALIGN="top">Any<BR>
+BREAK pressed, this is detected between two statements.
+The line and statement number in the report refer to the
+statement before BREAK was pressed, but CONTINUE goes to
+the statement after (allowing for any jumps to be done),
+so it does not repeat any statements. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">M</TD>
+<TD VALIGN="top">RAMTOP no good</TD>
+<TD VALIGN="top">CLEAR; possibly in RUN<BR>
+The number specified for RAMTOP is either too big or too
+small. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">N</TD>
+<TD VALIGN="top">Statement lost</TD>
+<TD VALIGN="top">RETURN, NEXT, CONTINUE<BR>
+Jump to a statement that no longer exists. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">O</TD>
+<TD VALIGN="top">Invalid stream</TD>
+<TD VALIGN="top">Microdrive,etc, operations<BR>
+[undocumented] </TD>
+</TR>
+<TR>
+<TD VALIGN="top">P</TD>
+<TD VALIGN="top">FN without DEF</TD>
+<TD VALIGN="top">FN<BR>
+User-defined function </TD>
+</TR>
+<TR>
+<TD VALIGN="top">Q</TD>
+<TD VALIGN="top">Parameter error</TD>
+<TD VALIGN="top">FN<BR>
+Wrong number of arguments, or one of them is the wrong
+type (string instead of number or vice versa). </TD>
+</TR>
+<TR>
+<TD VALIGN="top">R</TD>
+<TD VALIGN="top">Tape loading error</TD>
+<TD VALIGN="top">VERIFY LOAD or MERGE<BR>
+A file on tape was found but for some reason could not be
+read in, or would not verify. </TD>
+</TR>
+</TABLE>
+<H5 ALIGN="center"><A HREF="zxmanappa.html">[Back]</A>
+<A HREF="index.html">[Contents]</A> <A HREF="zxmanappc.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

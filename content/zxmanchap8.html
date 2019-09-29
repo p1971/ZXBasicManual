@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 8</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 8</H2>
+<H3>Strings</H3>
+<H4>Summary</H4>
+Slicing. using <B>TO</B>. Note that this notation is not standard BASIC.
+<P>Given a string, a substring of it consists of some consecutive characters from it, taken in sequence. Thus &quot;string&quot; is a substring of &quot;bigger string&quot;, but &quot;b string&quot; and &quot;big reg&quot; are not.</P>
+<P>There is a notation called slicing for describing substrings, and this can be applied to arbitrary string expressions. The general form is </P>
+<CODE><B><PRE>	string expression (start TO finish) 
+</PRE></B></CODE>
+<P>so that, for instance, </P>
+<CODE><B><PRE>       &quot;abcdef&quot;(2 TO 5)=&quot;bcde&quot;
+</PRE></B></CODE>
+<P>If you omit the start, then 1 is assumed; if you omit the finish then the length of the string is assumed. Thus</P>
+<CODE><B><PRE>	&quot;abcdef&quot;( TO 5)=&quot;abcdef&quot;(1 TO 5)=&quot;abcde&quot;
+	&quot;abcdef&quot;(2 TO )=&quot;abcdef&quot;(2 TO 6)=&quot;bcdef&quot;
+	&quot;abcdef&quot;( TO )=&quot;abcdef&quot;(1 TO 6)=&quot;abcdef&quot;
+</PRE></B></CODE>
+<P>(You can also write this last one as &quot;abcdef&quot;(), for what it's worth.)</P>
+<P>A slightly different form misses out the TO and just has one number. </P>
+<CODE><B><PRE>	&quot;abcdef&quot;(3)=&quot;abcdef&quot;(3 TO 3)=&quot;c&quot;
+</PRE></B></CODE>
+<P>Although normally both start and finish must refer to existing parts of the string, this rule is overridden by another one: if the start is more than the finish, then the result is the empty string. So </P>
+<CODE><B><PRE>	&quot;abcdef&quot;(5 TO 7)
+</PRE></B></CODE>
+<P>gives error 3 subscript wrong because the string only contains 6 characters and 7 is too many, but</P>
+<CODE><B><PRE>	&quot;abcdef&quot;(8 TO 7)=&quot;&quot;
+</PRE></B></CODE>
+and<BR>
+<CODE><B><PRE>	&quot;abcdef&quot;(1 TO 0)=&quot;&quot;
+</PRE></B></CODE>
+<P>The start and finish must not be negative, or you get error B integer out of range. This next program is a simple one illustrating some of these rules.</P>
+<CODE><B><PRE>        	10 LET a$=&quot;abcdef&quot;
+        	20 FOR n=1 TO 6
+        	30 PRINT a$(n TO 6)
+        	40 NEXT n
+        	50 STOP
+</PRE></B></CODE>
+<P>Type NEW when this program has been run and enter the next program:</P>
+<CODE><B><PRE>        	10 LET a$=&quot;ABLE WAS 1&quot;
+        	20 FOR n=1 TO 10
+        	30 PRINT a$(n TO 10),a$((10-n) TO 10)
+        	40 NEXT n
+        	50 STOP
+</PRE></B></CODE>
+<P>For string variables, we can not only extract substrings, but also assign to them. For instance, type</P>
+<CODE><B><PRE>        	LET a$=&quot;I'm the ZX Spectrum&quot;
+</PRE></B></CODE>
+and then
+<CODE><B><PRE>        	LET a$(5 TO 8)=&quot;******&quot;
+</PRE></B></CODE>
+and
+<CODE><B><PRE>        	PRINT a$
+</PRE></B></CODE>
+<P>Notice how since the substring a$(5 TO 8) is only 4 characters long, only the first four stars have been used. This is a characteristic of assigning to substrings: the substring has to be exactly the same length afterwards as it was before. To make sure this happens, the string that is being assigned to it is cut off on the right if it is too long, or filled out with spaces if it is too short - this is called Procrustean assignment after the inn-keeper Procrustes who used to make sure that his guests fitted the bed by either stretching them out on a rack or cutting their feet off.</P>
+<P>If you now try</P>
+<CODE><B><PRE>        	LET a$()=&quot;Hello there&quot;
+</PRE></B></CODE>
+<P>and</P>
+<CODE><B><PRE>        	PRINT a$;&quot;.&quot;
+</PRE></B></CODE>
+<P>you will see that the same thing has happened again (this time with spaces put in) because a$() counts as a substring.</P>
+<CODE><B><PRE>        	LET a$=&quot;Hello there&quot;
+</PRE></B></CODE>
+<P>will do it properly.</P>
+<P>Complicated string expressions will need brackets round them before they can be sliced. For example,</P>
+<CODE><B><PRE>        	&quot;abc&quot;+&quot;def&quot;(1 TO 2)=&quot;abcde&quot; 
+ 	        [&quot;abc&quot;+&quot;def&quot;)(1 TO 2)=&quot;ab&quot;
+</PRE></B></CODE>
+<P>Exercise</P>
+<OL>
+<LI>Try writing a program to print out the day of the week using string slicing. Hint: let the string be SunMonTuesWedThursFriSat.</LI>
+</OL>
+<CENTER><H5>
+<A HREF="./zxmanchap7.html">[Back]</A>
+<A HREF="./index.html">[Contents]</A>
+<A HREF="./zxmanchap9.html">[Next]</A>
+</H5></CENTER>
+</BODY>
+</HTML>

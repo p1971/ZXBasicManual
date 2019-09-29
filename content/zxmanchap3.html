@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 3</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 3</H2>
+<H3>Decisions</H3>
+<H4>Summary</H4>
+IF, STOP, =, &lt;, &gt;, &lt;=, &gt;=, &lt;&gt;
+<P>All the programs we have seen so far have been pretty predictable -
+they went straight through the instructions, and then went back to the beginning again. This is not very useful.
+In practice the computer would be expected to make decisions and act accordingly. The instruction used has the
+form . . . IF something is true, or not true THEN do something else.</P>
+<P>For example, use NEW to clear the previous program from the computer and type in and run this program. (This is clearly meant for two people to play!)</P>
+<CODE><B><PRE>	10 REM Guess the number
+	20 INPUT a: CLS
+	30 INPUT &quot;Guess the number&quot;, b
+	40 IF b=a THEN PRINT &quot;That is correct&quot;: STOP
+	50 IF b&lt;a THEN PRINT &quot;That is too small, try again&quot;
+	60 IF b&gt;a THEN PRINT &quot;That is too big, try again&quot;
+	70 GO TO 30
+</PRE></B></CODE>
+<P>You can see that an IF statement takes the form</P>
+<CODE><B>
+IF condition THEN . . .
+</B></CODE>
+<P>where the '. . .' stands for a sequence of commands, separated by colons in the usual way. The condition is something that is going to be worked out as either true or false: if it comes out as true then the statements in the rest of the line after THEN are executed, but otherwise they are skipped over, and the program executes the next instruction.</P>
+<P>The simplest conditions compare two numbers or two strings: they can test whether two numbers are equal or whether one is bigger than the other; and they can test whether two strings are equal, or (roughly) one comes before the other in alphabetical order. They use the relations =, &lt;, &gt;, &lt;=, &gt;=
+and &lt;&gt;.</P>
+<P>= means 'equals'. Although it is the same symbol as the = in a LET command, it is used in quite a different sense.</P>
+<P>&lt;(SYMBOL SHIFT with R) means 'is less than' so that</P>
+<PRE>  1 &lt; 2
+ -2 &lt; -1
+- 3 &lt; 1
+
+are all true, but
+
+ 1 &lt; 0
+ 0 &lt; -2
+
+are false.
+</PRE>
+<P>Line 40 compares a and b. If they are equal then the program is halted by the STOP command.
+The report at the bottom of the screen <B>9 STOP, statement, 30:3</B> shows that the third statement,
+or command, in line 30 caused the program to halt, i.e. STOP. </P>
+<P>Line 50 determines whether b is less than a, and line 60 whether b is greater than a. If one of these conditions is true then the appropriate comment is
+printed, and the program works its way to line 70 which tells the computer to go back to line 30 and start all over again.</P>
+<P>The CLS, clear screen, command in line 20 was to stop the other person seeing what you put in.</P>
+<P>So &gt;(SYMBOL SHIFT with T) means 'is greater than', and is just like &lt; but the other way round. You can remember which is which, because the thin end
+points to the number that is supposed to be smaller.</P>
+<P>&lt;= (SYMBOL SHIFT with Q - do not type it as &lt;followed by =) means
+'is less than or equal to', so that it is like &lt; except that it is true even if the two numbers are equal: thus 2&lt;=2 is true, but 2&lt;2 is false.</P>
+<P>&gt;= (SYMBOL SHIFT with E) means 'is greater than or equal to' and is similarly like &gt;.</P>
+<P>&lt;&gt;(SYMBOL SHIFT with W) means 'is not equal to', the opposite in meaning to =.</P>
+<P>Mathematicians usually write &lt;=, &gt;= and &lt;&gt;as <IMG SRC="lessthaneq.gif" WIDTH=10 HEIGHT=10>, <IMG SRC="greaterthaneq.gif" WIDTH=10 HEIGHT=10> and <IMG SRC="notequalto.gif" WIDTH=10 HEIGHT=10>. They also write things like '2&lt;3&lt;4' to mean '2&lt;3 and 3&lt;4', but this is not possible in BASIC.
+Note: in some versions of BASIC - but not on the ZX Spectrum - the IF statement can have the form</P>
+<CODE><B>IF condition THEN line number</B></CODE><BR>
+This means the same as
+<BR>
+<CODE><B>IF condition THEN GO TO line number</B></CODE>
+<P>Exercises<BR>
+<OL><LI>Try this program:
+<BR>
+<B><CODE>10 PRINT &quot;x&quot;: STOP: PRINT V</CODE></B>
+<P>When you run it, it will display x and stop with report <B>9 STOP statement, 10:2</B>. Now type</P>
+<B><CODE>CONTINUE</CODE></B>
+<P>You might expect this to jump back to the STOP command - CONTINUE usually repeats the statement referred to in the report. However, here this would not be very useful, because the computer would just stop again without displaying y. Therefore, things are arranged so that after report 9 CONTINUE jumps to the command after the STOP command - so in our example, after CONTINUE, the computer prints V and reaches the end of the program.</P>
+</LI></OL>
+<CENTER><H5>
+<A HREF="./zxmanchap2.html">[Back]</A>
+<A HREF="./index.html">[Contents]</A>
+<A HREF="./zxmanchap4.html">[Next]</A>
+</H5></CENTER>
+</BODY>
+</HTML>

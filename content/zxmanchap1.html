@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 1</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 1</H2>
+<H3>Introduction</H3>
+<P>Whether you read the Introductory book first, or came straight
+here, you should be aware that commands are obeyed straight away,
+and instructions begin with a line number and are stored away for
+later. You should also be aware of the commands: <B>PRINT</B>, <B>LET</B>,
+and <B>INPUT</B> (which can be used on all machines that use
+BASIC), and <B>BORDER</B>, <B>PAPER</B> and <B>BEEP</B> (which
+are used on the Spectrum).</P>
+<P>This BASIC manual starts by repeating some things given in the
+introductory booklet, but in much more detail, telling you
+exactly what you can and cannot do. You will also find some
+exercises at the end of each chapter. Don't ignore these; many of
+them illustrate points that are hinted at in the text. Look
+through them, and do any that interest you, or that seem to cover
+ground that you don't understand properly.</P>
+<P>Whatever else you do, keep using the computer. If you have the
+question &quot;what does it do if I tell it such and such?&quot;
+then the answer is easy: type it in and see. Whenever the manual
+tells you to type something in, always ask yourself, &quot;what
+could I type instead?&quot;, and try out your replies. The more
+of your own programs you write, the better you will understand
+the computer.</P>
+<P>At the end of this programming manual are some appendices.
+These include sections on the way the memory is organised, how
+the computer manipulates numbers, and a series of example
+programs illustrating the power of the ZX Spectrum.</P>
+<H4>The keyboard</H4>
+<P>ZX Spectrum characters comprise not only the single symbols
+(letters, digits, etc), but also the compound tokens (keywords,
+function names, etc) and all these are entered from the keyboard
+rather than being spelled out. To obtain all these functions and
+commands, some keys have five or more distinct meanings, given
+partly by shifting the keys (i.e. pressing either the <B>CAPS
+SHIFT</B> key or the <B>SYMBOL SHIFT</B> key at the same time as
+the required one) and partly by having the machine in different
+modes. </P>
+<P>The mode is indicated by the cursor, a flashing letter that
+shows where the next character from the keyboard will be
+inserted:</P>
+<UL>
+<LI><B>K</B> (for keywords) mode automatically replaces <B>L</B>
+mode when the machine is expecting a command or program
+line (rather than <B>INPUT</B> data), and from its
+position on the line it knows it should expect a line
+number or a keyword. This is at the beginning of the
+line, or just after <B>THEN</B>, or just after <B>:</B>
+(except in a string). If unshifted, the next key will be
+interpreted as either a keyword (written on the keys), or
+a digit.</LI>
+<LI><B>L</B> (for letters) mode normally occurs at all other
+times. If unshifted, the next key will be interpreted as
+the main symbol on that key, in lower case for letters.</LI>
+<LI>In both <B>K</B> and <B>L</B> modes, <B>SYMBOL SHIFT</B>
+and a key will be interpreted as the subsidiary red
+character on the key and <B>CAPS SHIFT</B> with a digit
+key will be interpreted as the control function written
+in white above the key <B>CAPS SHIFT</B> with other keys
+does not affect the keywords in <B>K</B> mode, and in <B>L</B>
+mode it converts lower case to capitals.</LI>
+<LI><B>C</B> (for capitals) mode is a variant of <B>L</B>
+mode in which all letters appear as capitals. <B>CAPS
+LOCK</B> causes a change from <B>L</B> mode to <B>C</B>
+mode or back again.</LI>
+<LI><B>E</B> (for extended) mode is used for obtaining
+further characters, mostly tokens. It occurs after both
+shift keys are pressed together, and lasts for one key
+depression only. In this mode, a letter gives one
+character or token (shown in green above it) if
+unshifted, and another (shown in red below it) if pressed
+with either shift. A digit key gives a token if pressed
+with <B>SYMBOL SHIFT</B>; otherwise it gives a colour
+control sequence.</LI>
+<LI><B>G</B> (for graphics) mode occurs after <B>GRAPHICS</B>
+(<B>CAPS SHIFT and 9</B>) is pressed, and lasts until it
+is pressed again or 9 is pressed on its own. A digit key
+will give a mosaic graphic, quit <B>GRAPHICS</B> or <B>DELETE</B>,
+and each of the letter keys apart from V, W, X, Y and Z,
+will give a user-defined graphic.</LI>
+</UL>
+<P>If any key is held down for more than about 2 or 3 seconds, it
+will start auto-repeating.</P>
+<P>Keyboard input appears in the bottom half of the screen as it
+is typed, each character (single symbol or compound token) being
+inserted just before the cursor. The cursor can be moved left
+with <B>CAPS SHIFT</B> and <B>5</B>, or right with <B>CAPS SHIFT</B>
+and <B>8</B>. The character before the cursor can be deleted with
+<B>DELETE</B> (<B>CAPS SHIFT</B> and <B>9</B>). (Note: the whole
+line can be deleted by typing <B>EDIT</B> (<B>CAPS SHIFT</B> and <B>1</B>)
+followed by <B>ENTER</B>.)</P>
+<P>When <B>ENTER</B> is pressed, the line is executed, entered
+into the program, or used as <B>INPUT</B> data as appropriate,
+unless it contains a syntax error. In this case a flashing <IMG SRC="inversequestionmark.gif" ALT="inverse question mark" WIDTH="15" HEIGHT="15"> appears next to the error.</P>
+<P>As program lines are entered, a listing is displayed in the
+top half of the screen. The last line entered is called the
+current line and is indicated by the symbol <IMG SRC="inversegt.gif" ALT="&gt;" WIDTH="15" HEIGHT="15">; this can
+be moved by using the keys <IMG SRC="crsrdown.gif" ALT="Cursor down" WIDTH="10" HEIGHT="10"> (<B>CAPS SHIFT and 6</B>)
+and <IMG SRC="crsrup.gif" ALT="Cursor up" WIDTH="10" HEIGHT="10">
+(<B>CAPS SHIFT and 7</B>). If <B>EDIT</B> (<B>CAPS SHIFT and 1</B>)
+is pressed, the current line is brought down to the bottom part
+of the screen and can be edited.</P>
+<P>When a command is executed or a program run, output is
+displayed in the top half of the screen and remains until a
+program line is entered, or ENTER is pressed with an empty line,
+or <IMG SRC="crsrup.gif" ALT="Cursor up" WIDTH="10" HEIGHT="10">
+or <IMG SRC="crsrdown.gif" ALT="Cursor down" WIDTH="10" HEIGHT="10"> (CAPS SHIFT and 6) and <IMG SRC="crsrup.gif" ALT="Cursor up" WIDTH="10" HEIGHT="10"> is pressed. In the bottom
+part appears a report giving a code (digit or letter) referred to
+in <A HREF="zxmanappb.html">Appendix B</A>. The report remains on
+the screen until a key is pressed (and indicates <B>K</B> mode).</P>
+<P>In certain circumstances, <B>CAPS SHIFT</B> with the <B>SPACE</B>
+key acts as a <B>BREAK</B>, stopping the computer with report <B>D</B>
+or <B>L</B>. This is recognised:</P>
+<OL TYPE="i">
+<LI>at the end of a statement while a program is running, or</LI>
+<LI>while the computer is using the cassette recorder or
+printer.</LI>
+</OL>
+<H4>The television screen</H4>
+<P>This has 24 lines, each 32 characters long, and is divided
+into two parts. The top part is at most 22 lines and displays
+either a listing or program output. When printing in the top part
+has reached the bottom, it all scrolls up one line; if this would
+involve losing a line that you have not had a chance to see yet,
+then the computer stops with the message <B>scroll?</B>. Pressing
+the keys <B>N</B>, <B>SPACE</B> or <B>STOP</B> will make the
+program stop with report <B>D BREAK - CONT repeats</B>; any other
+key will let the scrolling continue. The bottom part is used for
+inputting commands, program lines, and INPUT data, and also for
+displaying reports. The bottom part starts off as two lines (the
+upper one blank), but it expands to accommodate whatever is typed
+in. When it reaches the current print position in the top half,
+further expansions will make the top half scroll up.</P>
+<H5 ALIGN="center"><A HREF="index.html">[Back]</A>
+<A HREF="index.html">[Contents]</A> <A HREF="zxmanchap2.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 2</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 2</H2>
+<H3>Basic programming concepts</H3>
+<H4>Summary</H4>
+<UL>
+<LI>Programs</LI>
+<LI>Line numbers</LI>
+<LI>Editing programs using <IMG SRC="crsrdown.gif" WIDTH=10 HEIGHT=10 ALT="cursor down">, <IMG SRC="crsrup.gif" WIDTH=10 HEIGHT=10 ALT="cursor up">, and <B>EDIT</B></LI>
+<LI><B>RUN</B>, <B>LIST</B></LI>
+<LI><B>GO TO</B>, <B>CONTINUE</B>, <B>INPUT</B>, <B>NEW</B>, <B>REM</B>, <B>PRINT</B></LI>
+<LI><B>STOP</B> in <B>INPUT</B> data</LI>
+<LI><B>BREAK</B></LI>
+</UL>
+<P>Type in these two lines of a computer program to print out the sum of two numbers:</P>
+<PRE><CODE><B>
+20 PRINT a
+10 LET a=10
+</B></CODE></PRE>
+<P>So that the screen looks like this:</P>
+<IMG SRC="chap2diag1.gif" ALT="picture of speccy screen">
+<P>As you already know, because these lines began with numbers, they were not obeyed immediately but stored away, as program lines. You will also have noticed here that the line numbers govern the order of the lines within the program: this is most important when the program is run, but it is also reflected in the order of the lines in the listing that you can see on the screen now.</P>
+<P>So far you have only entered one number, so type</P>
+<P><CODE><B>15 LET b=15</B></CODE></P>
+<P>and in it goes. It would have been impossible to insert this line between the first two if they had been numbered 1 and 2 instead of 10 and 20 (line numbers must be whole numbers between 1 and 9999), so that is why, when first typing in a program, it is good practice to leave gaps between the line numbers.</P>
+<P>Now you need to change line 20 to</P>
+<P><CODE><B>20 PRINT a+b</B></CODE></P>
+<P>You could type out the replacement in full, but it is easier to use the <B>EDIT</B> facility described in the introductory booklet. The <IMG SRC="inversegt.gif" ALT="inverse &gt"> by line 15 is called the program cursor, and the line it points to is the current line. This is usually the last line that you entered, but you can use the <IMG SRC="crsrup.gif" ALT="cursor up"> or <IMG SRC="crsrdown.gif" ALT="cursor down"> keys to move the program cursor down or up. (Try it, leaving the program cursor eventually at line 20.)</P>
+<P>When you press the <B>EDIT</B> key, then a copy of the current line will be displayed at the bottom of the screen - in your case, a copy of line 20. Hold down the <IMG SRC="crsrright.gif" ALT="cursor right"> key until the <B>L</B> cursor moves to the end of the line, and then type
+<P><CODE><B>+b (without ENTER)</B></CODE></P>
+<P>The line at the bottom should now read</P>
+<P><CODE><B>20 PRINT a+b</B></CODE></P>
+<P>Type <B>ENTER</B> and it will replace the old line 20, so that the screen looks like this:</P>
+<IMG SRC="chap2diag2.gif" ALT="picture of speccy screen">
+<P>Run this program using <B>RUN</B> and <B>ENTER</B> and the sum will be displayed.</P>
+<P>Run the program again and then type</P>
+<P><CODE><B>PRINT a, b</B></CODE></P>
+<P>The variables are still there, even though the program has finished.</P>
+<P>There is a useful method using <B>EDIT</B> to get rid of the bottom part of the screen. Type in a load of rubbish (without <B>ENTER</B>) and then decide that you don't want it after all. One way to delete it is to hold the <B>DELETE</B> key down until the line is gone; but another way is as follows. If you press <B>EDIT</B>, the rubbish at the bottom of the screen will be replaced by a copy of the current line. If you now press ENTER, the current line will be put back in the program unaltered, leaving the bottom part of the screen clear.</P>
+<P>If you enter a line by mistake, say</P>
+<P><CODE><B>12 LET b=8</B></CODE></P>
+<P>it will go up into the program and you will realise your mistake. To delete this unnecessary line, type</P>
+<P><CODE><B>12 (with ENTER of course)</B></CODE></P>
+<P>You will notice with surprise that the program cursor has gone. You should imagine it as being hidden in between lines 10 and 15, so if you press <IMG SRC="crsrup.gif" ALT="cursor up"> it will move up to line 10, while if you press <IMG SRC="crsrdown.gif" ALT="cursor down"> it will move down to line 15.</P>
+<P>Type</P>
+<P><CODE><B>12 (and ENTER)</B></CODE></P>
+<P> Again, the program cursor will be hidden between lines 10 and 15. Now press <B>EDIT</B> and line 15 will come down: when the program cursor is hidden between two lines, <B>EDIT</B> brings down the next line following the new line number. Type <B>ENTER</B> to clear the bottom part of the screen.</P>
+<P>Now type</P>
+<P><CODE><B>30	(and ENTER)</B></CODE></P>
+<P>This time, the program cursor is hidden after the end of the program: and if you press <B>EDIT</B>, then line 20 will be brought down.</P>
+<P>Lastly, type</P>
+<P><CODE><B>LIST 15</B></CODE></P>
+<P>You will now see on the screen</P>
+<P><CODE><B>15 LET b=15<BR>20 PRINT a+b</B></CODE></P>
+<P>Line 10 has vanished from the screen, but it is still in your program - which you can prove by pressing <B>ENTER</B>. The only effects of <B>LIST 15</B> are to produce a listing that starts at line 15, and to put the program cursor at line 15. If you have a very long program, then <B>LIST</B> will probably be a more useful way of moving the program cursor than <IMG SRC="crsrdown.gif" ALT="cursor down"> and <IMG SRC="crsrup.gif" ALT="cursor up">.</P>
+<P>This illustrates another use of line numbers: they act as names for the program lines so that you can refer to them, rather like the way in which variables have names.</P>
+<P><B>LIST</B> on its own makes the listing start at the beginning of a program.</P>
+<P>Another command seen in the introductory booklet is:</P>
+<P><CODE><B>NEW</B></CODE></P>
+<P>This erases any old programs and variables in the computer. Now carefully type in this program, which changes Fahrenheit temperatures to Centigrade.</P>
+<P><CODE><B>10 REM temperature conversion<BR>
+20 PRINT &quot;deg F&quot;, &quot;deg C&quot;<BR>
+30 PRINT<BR>
+40 INPUT &quot;Enter deg F&quot;, F<BR>
+50 PRINT F,(F-32)*5/9<BR>
+60 GO TO 40<BR></B></CODE></P>
+<P>You will need to type the words in line 10. Also, although GO TO has a space in it, it is really all one keyword (on G).</P>
+<P>Now run it. You will see the headings printed on the screen by line 20, but what happened to line 10? Apparently the computer has completely ignored it. Well, it has. REM in line 10 stands for remark, or reminder, and is there solely to remind you of what the program does. A REM command consists of REM followed by anything you like, and the computer will ignore it right up to the end of the line.</P>
+<P>By now, the computer has got to the INPUT command on line 40 and is waiting for you to type in a value for the variable F - you can tell this because where you might have expected a <B>K</B> cursor there is instead an <B>L</B> cursor. Enter a number; remember ENTER. Now the computer has displayed the result and is waiting for another number. This is because of line 60, GO TO 40, which means exactly what it says. Instead of running out of program and stopping, the computer jumps back to line 40 and starts again. So, enter another temperature. After a few more of these you might be wondering if the machine will ever get bored with this, it won't. Next time it asks for another number, type STOP. The computer comes back with a report <B>H STOP in INPUT in line 40:1</B>, which tells you why it stopped, and where (in the first command of line 40).</P>
+<P>If you want to continue the program type</P>
+<P><CODE><B>CONTINUE</B></CODE></P>
+<P>and the computer will ask you for another number.</P>
+<P>When CONTINUE is used the computer remembers the line number in the last report that it sent you, as long as it was not <B>0 OK</B>, and jumps back to that line: in our case, this involves jumping to line 40, the INPUT command.</P>
+<P>Replace line 60 by GO TO 31 - it will make no perceptible difference to the running of the program. If the line number in a GO TO command refers to a non-existent line, then the jump is to the next line after the given number. The same goes for RUN; in fact RUN on its own actually means RUN 0.</P>
+<P> Now type in numbers until the screen starts getting full. When it is full, the computer will move the whole of the top half of the screen up one line to make room, losing the heading off the top. This is called scrolling.</P>
+<P>When you are tired of this, stop the program using STOP and get the listing by pressing ENTER.</P>
+<P>Look at the PRINT statement on line 50. The punctuation in this - the comma (,) is very important, and you should remember that it follows much more definite rules than the punctuation in English.</P>
+<P>Commas are used to make the printing start either at the left hand margin, or in the middle of the screen, depending on which comes next. Thus in line 50, the comma causes the centigrade temperature to be printed in the middle of the line. With a semicolon, on the other hand, the next number or string is printed immediately after the preceding one. You can see this in line 50, if the comma is replaced by a semicolon.</P>
+<P>Another punctuation mark you can use like this in PRINT commands is the apostrophe ('). This makes whatever is printed next appear at the beginning of the next line on the screen but this happens anyway at the end of each PRINT command, so you will not need the apostrophe very much. This is why the PRINT command in line 50 always starts its printing on a new line, and it is also why the PRINT command in line 30 produces a blank line.</P>
+<P>If you want to inhibit this, so that after one PRINT command the next one carries on on the same line, you can put a comma or semicolon at the end of the first. To see how this works, replace line 50 in turn by each of</P>
+<P><B><CODE>
+50 PRINT F,<BR>
+50 PRINT F;<BR>
+</CODE></B>and<B><CODE>
+<BR>50 PRINT F</CODE></B></P>
+<P>and run each version - for good measure you could also try</P>
+<P><CODE><B>50 PRINT F'</B></CODE></P>
+<P>The one with the comma spreads everything out in two columns, that with the semicolon crams everything together, that without either allows a line for each number and so does that with the apostrophe - the apostrophe gives a new line of its own, but inhibits the automatic one.</P>
+<P>Remember the difference between commas and semicolons in PRINT commands; also, do not confuse them with the colons (:) that are used to separate commands in a single line.</P>
+<P>Now type in these extra lines:</P>
+<P><CODE><B>100 REM this polite program remembers your name<BR>110 INPUT n$<BR>120 PRINT &quot;Hello &quot;;n$;&quot;!&quot;<BR>130 GO TO 110</B></CODE></P>
+<P>This is a separate program from the last one, but you can keep them both in the computer at the same time. To run the new one, type</P>
+<P><CODE><B>RUN 100</B></CODE></P>
+<P>Because this program inputs a string instead of a number, it prints out two string quotes - this is a reminder to you, and it usually saves you some typing as well. Try it once with any alias you care to make up for yourself.</P>
+<P>Next time round, you will get two string quotes again. but you don't have to use them if you don't want to. Try this, for example. Rub them out (with <IMG SRC="crsrright.gif" ALT="cursor right"> and DELETE twice), and type</P>
+<P><CODE><B>n$</B></CODE></P>
+<P>Since there are no string quotes, the computer knows that it has to do some calculation: the calculation in this case is to find the value of the string variable called n$, which is whatever name you happen to have typed in last time round. Of course, the INPUT statement acts like LET n$=n$, so the value of n$ is unchanged.</P>
+<P>The next time round, for comparison, type</P>
+<P><CODE><B>n$</B></CODE></P>
+<P>again, this time without rubbing out the string quotes. Now, just to confuse you, the variable n$ has the value &quot;n$&quot;.</P>
+<P>If you want to use STOP for string input, you must first move the cursor back to the beginning of the line, using <IMG SRC="crsrleft.gif" ALT="cursor left">.</P>
+<P>Now look back at that RUN 100 we had earlier on. That just jumps to line 100, so couldn't we have said GO TO 100 instead? In this case, it so happens that the answer is yes; but there is a difference. RUN 100 first of all clears all the variables and the screen, and after that works just like GO TO 100. GO TO 100 doesn't clear anything. There may well be occasions where you want to run a program without clearing any variables; here GO TO would be necessary and RUN could be disastrous, so it is better not to get into the habit of automatically typing RUN to run a program.</P>
+<P>Another difference is that you can type RUN without a line number, and it starts off at the first line in the program. GO TO must always have a line number.</P>
+<P>Both these programs stopped because you typed STOP in the input line; sometimes - by mistake - you write a program that you can't stop and won't stop itself. Type</P>
+<P><CODE><B>200 GO TO 200<BR>RUN 200</B></CODE></P>
+<P>This looks all set to go on for ever unless you pull the plug out; but there is a less drastic remedy. Press CAPS SHIFT with the SPACE key, which has BREAK written above it. The program will stop, saying <B>L BREAK into program</B>.</P>
+<P>At the end of every statement, the program looks to see if these keys are pressed; and if they are, then it stops. The BREAK key can also be used when you are in the middle of using the cassette recorder or the printer, or various other bits of machinery that you can attach to the computer - just in case the computer is waiting for them to do something but they're not doing it.</P>
+<P>In these cases there is a different report, <B>D BREAK - CONT repeats</B>. CONTINUE in this case (and in fact in most other cases too) repeats the statement where the program was stopped; but after the report <B>L BREAK into program</B>, CONTINUE carries straight on with the next statement after allowing for any jumps to be made.</P>
+<P>Run the name program again and when it asks you for input type</P>
+<P><CODE><B>n$ (after removing the quotes)</B></CODE></P>
+<P>n$ is an undefined variable and you get an error report <B>2: Variable not found</B>.</P>
+<P>If you now type</P>
+<P><CODE><B>LET n$=&quot;something definite&quot;</B></CODE></P>
+<P>(which has its own report of <B>0 OK, 0:1</B>) and</P>
+<P><CODE><B>CONTINUE</B></CODE></P>
+<P>you will find that you can use n$ as input data without any trouble.</P>
+<P>In this case CONTINUE does a jump to the INPUT command in line 110. It disregards the report from the LET statement because that said 'OK', and jumps to the command referred to in the previous report, the first command in line 110. This is intended to be useful. If a program stops over some error then you can do all sorts of things to fix it, and CONTINUE will still work afterwards.</P>
+<P>As we said before, the report <B>L BREAK into program</B> is special, because after it CONTINUE does not repeat the command where the program stopped.</P>
+<P>The automatic listings (the ones that are not the result of a LIST command but occur after entering a new line) may well have you puzzled. If you type in a program with 50 lines, all REM statements,</P>
+<P><CODE><B>1 REM<BR>2 REM<BR>3 REM<BR>: :<BR>: :<BR>49 REM<BR>50 REM</B></CODE></P>
+<P>then you will be able to experiment.</P>
+<P>The first thing to remember is that the current line (with <IMG SRC="inversegt.gif" ALT="&gt;">) will always appear on the screen, and usually near the middle.<BR><BR>Type</P>
+<P><CODE><B>LIST (and ENTER of course)</B></CODE></P>
+<P>and when it asks <B>scroll?</B> (because it has filled up the screen) press n for 'No'. The computer will give the report <B>D BREAK - CONT repeats</B> as though you had typed BREAK. You might at some stage find out what happens if you press y instead of n; n, SPACE and STOP count as No, while everything else counts as Yes.
+<P>Now press ENTER again to get an automatic listing and you should see lines 1 to 22 on the screen. <BR>Now type</P>
+<P><CODE><B>23 REM</B></CODE></P>
+<P>and you get lines 2 to 23 on the screen; type</P>
+<P><CODE><B>28 REM</B></CODE></P>
+<P>and you get lines 7 to 28. (In both cases, by typing a new line, you have moved the program cursor so that a new listing has been made.)</P>
+<P>Maybe this looks a little arbitrary to you. It is actually trying to give you exactly what you want, although, humans being unpredictable creatures, it doesn't always guess right.</P>
+<P>The computer keeps a record not only of the current line, the one that has to appear on the screen, but also the top line on the screen. When it tries to make a listing, the first thing it does is compare the top line to the current line. If the top line comes after, then there is no point in starting there, so it uses the current line for a new top line and makes its listing. Otherwise, its method is to start making the listing from the top line, and carry on until it has listed the current line, scrolling if necessary.</P>
+<P>However, it first does a rough calculation to see how long this would take, and if the answer is much too long, then it moves the top line down to be a lot closer to the current line. Now, having worked out its top line, it starts listing from there. If, when it reaches the end of the program or the bottom of the screen, the current line has been listed, then it stops. Otherwise, it scrolls until the current line is on the screen, and for each extra line that it lists it moves the top line down one so that the top line drifts into the neighbourhood of the current line.</P>
+<P>Experiment with moving the current line about by typing</P>
+<P>line number <B>REM</B></P>
+<P>LIST moves the current line but not the top line, so subsequent listings might be different. For instance, type</P>
+<P><CODE><B>LIST</B></CODE></P>
+<P>to get the LIST listing and then press ENTER again to make line 0 the top line. You should have lines 1 to 22 on the screen. Type</P>
+<P><CODE><B>LIST 22</B></CODE></P>
+<P>which gives you lines 22 to 43; when you press ENTER again, you get back lines 1 to 22. This tends to be more useful for short programs than for long ones.</P>
+<P>Using the program full of REMs above, type</P>
+<P><CODE><B>LIST</B></CODE></P>
+<P>and then n when it asks you <B>scroll?</B>. Now type</P>
+<P><CODE><B>CONTINUE</B></CODE></P>
+<P>CONTINUE is a bit quirky here, because the bottom part of the screen goes blank; but you can restore normality with BREAK. The reason is that LIST was the first command in the line, so CONTINUE repeats this command. Unfortunately, the first command in the line is now CONTINUE itself so the computer just sits there doing CONTINUE over and over again until you stop it.</P>
+<P>You can vary this by replacing LIST with</P>
+<P><CODE><B>:LIST</B></CODE></P>
+<P>for which CONTINUE gives 0 OK (because CONTINUE jumps to the second command in the line, which is taken to be its end) or</P>
+<P><CODE><B>::LIST</B></CODE></P>
+<P>for which CONTINUE gives <B>N Statement lost</B> (because CONTINUE jumps to the third command in the line, which no longer exists).
+<P>You have now seen the statements PRINT, LET, INPUT, RUN, LIST, GO TO, CONTINUE, NEW and REM, and they can all be used either as direct commands or in program lines - this is true of almost all commands in ZX Spectrum BASIC. RUN, LIST, CONTINUE and NEW are not usually of much use in a program, but they can be used.</P>
+<H4>Exercises</H4>
+<OL>
+<LI>Put a LIST statement in a program, so that when you run it, it lists itself.</LI>
+<LI>Write a program to input prices and print out the tax due (at 15 per cent). Put in PRINT statements so that the computer announces what it is going to do, and asks for the input price with extravagant
+politeness. Modify the program so that you can also input the tax rate (to allow for zero ratings or future changes).</LI>
+<LI>Write a program to print a running total of numbers you input. (Suggestion: have two variables called total - set to 0 to begin with - and item. Input item, add it to total, print them both, and go round again.)</LI>
+<LI>What would CONTINUE and NEW do in a program? Can you think of any uses at all for this?</LI>
+</OL>
+<BR>
+<CENTER><H5>
+<A HREF="./zxmanchap1.html">[Back]</A>
+<A HREF="./index.html">[Contents]</A>
+<A HREF="./zxmanchap3.html">[Next]</A>
+</H5></CENTER>
+</BODY>
+</HTML>

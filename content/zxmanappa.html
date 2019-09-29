@@ -1,0 +1,1924 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Appendix A</TITLE>
+</HEAD>
+<BODY>
+<H2>APPENDIX A</H2>
+<H3>The character set</H3>
+<P>This is the complete Spectrum character set, with codes in
+decimal and hex. If one imagines the codes as being Z80 machine
+code instructions, then the right hand columns give the
+corresponding assembly language mnemonics. As you are probably
+aware if you understand these things, certain Z80 instructions
+are compounds starting with CBh or EDh; the two right hand
+columns give these.</P>
+<TABLE BORDER="1">
+<TR>
+<TD>Code</TD>
+<TD>Character</TD>
+<TD>Hex</TD>
+<TD>Z80 Assembler</TD>
+<TD>after CB</TD>
+<TD>after ED</TD>
+</TR>
+<TR>
+<TD>0</TD>
+<TD>Not used</TD>
+<TD>00</TD>
+<TD>nop</TD>
+<TD>rlc b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>Not used</TD>
+<TD>01</TD>
+<TD>ld bc,NN</TD>
+<TD>rlc c</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>Not used</TD>
+<TD>02</TD>
+<TD>ld (bc),a</TD>
+<TD>rlc d</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>3</TD>
+<TD>Not used</TD>
+<TD>03</TD>
+<TD>inc bc</TD>
+<TD>rlc e</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>4</TD>
+<TD>Not used</TD>
+<TD>04</TD>
+<TD>inc b</TD>
+<TD>rlc h</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>5</TD>
+<TD>Not used</TD>
+<TD>05</TD>
+<TD>dec b</TD>
+<TD>rlc l</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>6</TD>
+<TD>PRINT comma</TD>
+<TD>06</TD>
+<TD>ld b,N</TD>
+<TD>rlc (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>7</TD>
+<TD>EDIT</TD>
+<TD>07</TD>
+<TD>rlca</TD>
+<TD>rlc a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>8</TD>
+<TD><IMG SRC="crsrleft.gif" WIDTH="15" HEIGHT="15"></TD>
+<TD>08</TD>
+<TD>ex af,af'</TD>
+<TD>rrc b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>9</TD>
+<TD><IMG SRC="crsrright.gif" WIDTH="15" HEIGHT="15"></TD>
+<TD>09</TD>
+<TD>add hl,bc</TD>
+<TD>rrc c</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>10</TD>
+<TD><IMG SRC="crsrdown.gif" WIDTH="15" HEIGHT="15"></TD>
+<TD>0A</TD>
+<TD>ld a,(bc)</TD>
+<TD>rrc d</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>11</TD>
+<TD><IMG SRC="crsrup.gif" WIDTH="15" HEIGHT="15"></TD>
+<TD>0B</TD>
+<TD>dec bc</TD>
+<TD>rrc e</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>12</TD>
+<TD>DELETE</TD>
+<TD>0C</TD>
+<TD>incc</TD>
+<TD>rrch</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>13</TD>
+<TD>ENTER</TD>
+<TD>0D</TD>
+<TD>dec c</TD>
+<TD>rrc</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>14</TD>
+<TD>number</TD>
+<TD>0E</TD>
+<TD>ld c,N</TD>
+<TD>rrc (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>15</TD>
+<TD>not used</TD>
+<TD>0F</TD>
+<TD>rrca</TD>
+<TD>rrc a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>16</TD>
+<TD>INK control</TD>
+<TD>10</TD>
+<TD>djnz DIS</TD>
+<TD>rl b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>17</TD>
+<TD>PAPER control</TD>
+<TD>11</TD>
+<TD>ld de,NN</TD>
+<TD>rlc</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>18</TD>
+<TD>FLASH control</TD>
+<TD>12</TD>
+<TD>ld (de),a</TD>
+<TD>rl d</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>19</TD>
+<TD>BRIGHT control</TD>
+<TD>13</TD>
+<TD>inc de</TD>
+<TD>rl e</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>20</TD>
+<TD>INVERSE control</TD>
+<TD>14</TD>
+<TD>inc d</TD>
+<TD>rl h</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>21</TD>
+<TD>OVER control</TD>
+<TD>15</TD>
+<TD>dec d</TD>
+<TD>rl l</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>22</TD>
+<TD>AT control</TD>
+<TD>16</TD>
+<TD>ld d,N</TD>
+<TD>rl (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>23</TD>
+<TD>TAB control</TD>
+<TD>17</TD>
+<TD>rla</TD>
+<TD>rl a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>24</TD>
+<TD>Not used</TD>
+<TD>18</TD>
+<TD>jr DIS</TD>
+<TD>rr b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>25</TD>
+<TD>Not used</TD>
+<TD>19</TD>
+<TD>add hl,de</TD>
+<TD>rr c</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>26</TD>
+<TD>Not used</TD>
+<TD>1A</TD>
+<TD>ld a,(de)</TD>
+<TD>rr d</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>27</TD>
+<TD>Not used</TD>
+<TD>1B</TD>
+<TD>dec de</TD>
+<TD>rr e</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>28</TD>
+<TD>Not used</TD>
+<TD>1C</TD>
+<TD>inc e</TD>
+<TD>rr h</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>29</TD>
+<TD>Not used</TD>
+<TD>1D</TD>
+<TD>dec e</TD>
+<TD>rr l</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>30</TD>
+<TD>Not used</TD>
+<TD>1E</TD>
+<TD>ld e,N</TD>
+<TD>rr (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>31</TD>
+<TD>Not used</TD>
+<TD>1F</TD>
+<TD>rra</TD>
+<TD>rr a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>32</TD>
+<TD>space</TD>
+<TD>20</TD>
+<TD>jr nz, DlS</TD>
+<TD>sla b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>33</TD>
+<TD>!</TD>
+<TD>21</TD>
+<TD>ld hl,NN</TD>
+<TD>sla c</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>34</TD>
+<TD>&quot;</TD>
+<TD>22</TD>
+<TD>ld (NN),hl</TD>
+<TD>sla d</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>35</TD>
+<TD>#</TD>
+<TD>23</TD>
+<TD>inc hl</TD>
+<TD>sla e</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>36</TD>
+<TD>$</TD>
+<TD>24</TD>
+<TD>inc h</TD>
+<TD>sla h</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>37</TD>
+<TD>%</TD>
+<TD>25</TD>
+<TD>dec h</TD>
+<TD>sla l</TD>
+</TR>
+<TR>
+<TD>38</TD>
+<TD>&amp;</TD>
+<TD>26</TD>
+<TD>ld h,N</TD>
+<TD>sla (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>39</TD>
+<TD>,</TD>
+<TD>27</TD>
+<TD>daa</TD>
+<TD>sla a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>40</TD>
+<TD>(</TD>
+<TD>28</TD>
+<TD>jr z,DlS</TD>
+<TD>sra b</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>41</TD>
+<TD>)</TD>
+<TD>29</TD>
+<TD>add hl,hl</TD>
+<TD>sra c</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>42</TD>
+<TD>*</TD>
+<TD>2A</TD>
+<TD>ld hl,(NN)</TD>
+<TD>sra d</TD>
+</TR>
+<TR>
+<TD>43</TD>
+<TD>+</TD>
+<TD>2B</TD>
+<TD>dec hl</TD>
+<TD>sra e</TD>
+</TR>
+<TR>
+<TD>44</TD>
+<TD>,</TD>
+<TD>2C</TD>
+<TD>inc ll</TD>
+<TD>sra h</TD>
+</TR>
+<TR>
+<TD>45</TD> 
+<TD>-</TD>
+<TD>2D</TD>
+<TD>dec l</TD>
+<TD>sra l</TD>
+</TR>
+<TR>
+<TD>46</TD>
+<TD>.</TD>
+<TD>2F</TD>
+<TD>ld l,N</TD>
+<TD>sra (hl)</TD>
+</TR>
+<TR>
+<TD>47</TD>
+<TD>/</TD>
+<TD>2F</TD>
+<TD>cpl</TD>
+<TD>sra a</TD>
+</TR>
+<TR>
+<TD>48</TD>
+<TD>0</TD>
+<TD>30</TD>
+<TD>jr nc,DlS</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>49</TD>
+<TD>1</TD>
+<TD>31</TD>
+<TD>ld sp,NN</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>50</TD>
+<TD>2</TD>
+<TD>32</TD>
+<TD>ld (NN),a</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>51</TD>
+<TD>3</TD>
+<TD>33</TD>
+<TD>inc sp</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>52</TD>
+<TD>4</TD>
+<TD>34</TD>
+<TD>inc (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>53</TD>
+<TD>5</TD>
+<TD>35</TD>
+<TD>dec (hl)</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>54</TD>
+<TD>6</TD>
+<TD>36</TD>
+<TD>ld (hl),N</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>55</TD>
+<TD>7</TD>
+<TD>37</TD>
+<TD>scf</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR>
+<TD>56</TD>
+<TD>8</TD>
+<TD>38</TD>
+<TD>lr c,DlS</TD>
+<TD>srl b</TD>
+</TR>
+<TR>
+<TD>57</TD>
+<TD>9</TD>
+<TD>39</TD>
+<TD>add hl,sp</TD>
+<TD>srl c</TD>
+</TR>
+<TR>
+<TD>58</TD>
+<TD>:</TD>
+<TD>3A</TD>
+<TD>ld a,(NN)</TD>
+<TD>srl d</TD>
+</TR>
+<TR>
+<TD>59</TD>
+<TD>;</TD>
+<TD>3B</TD>
+<TD>dec sp</TD>
+<TD>srl e</TD>
+</TR>
+<TR>
+<TD>60</TD>
+<TD>&lt;</TD>
+<TD>3C</TD>
+<TD>inc a</TD>
+<TD>srl h</TD>
+</TR>
+<TR>
+<TD>61</TD>
+<TD>=</TD>
+<TD>3D</TD>
+<TD>dec a</TD>
+<TD>srl l</TD>
+</TR>
+<TR>
+<TD>62</TD>
+<TD>&gt;</TD>
+<TD>3E</TD>
+<TD>ld a,N</TD>
+<TD>srl (hl)</TD>
+</TR>
+<TR>
+<TD>63</TD>
+<TD>?</TD>
+<TD>3F</TD>
+<TD>ccf</TD>
+<TD>srl a</TD>
+</TR>
+<TR>
+<TD>64</TD>
+<TD>@</TD>
+<TD>40</TD>
+<TD>ld b,b</TD>
+<TD>bit 0,b</TD>
+<TD>in b,(c)</TD>
+</TR>
+<TR>
+<TD>65</TD>
+<TD>A</TD>
+<TD>41</TD>
+<TD>ld b,c</TD>
+<TD>bit 0,c</TD>
+<TD>out (c),b</TD>
+</TR>
+<TR>
+<TD>66</TD>
+<TD>B</TD>
+<TD>42</TD>
+<TD>ld b,d</TD>
+<TD>bit 0,d</TD>
+<TD>sbc hl,bc</TD>
+</TR>
+<TR>
+<TD>67</TD>
+<TD>C</TD>
+<TD>43</TD>
+<TD>ld b,e</TD>
+<TD>bit 0,e</TD>
+<TD>ld (NN),bc</TD>
+</TR>
+<TR>
+<TD>68</TD>
+<TD>D</TD>
+<TD>44</TD>
+<TD>ld b,h</TD>
+<TD>bit 0,h</TD>
+<TD>neg</TD>
+</TR>
+<TR>
+<TD>69</TD>
+<TD>E</TD>
+<TD>45</TD>
+<TD>ld b,l</TD>
+<TD>bit 0,1</TD>
+<TD>retn</TD>
+</TR>
+<TR>
+<TD>70</TD>
+<TD>F</TD>
+<TD>46</TD>
+<TD>ld b,(hl)</TD>
+<TD>bit 0,(hl)</TD>
+<TD>im 0</TD>
+</TR>
+<TR>
+<TD>71</TD>
+<TD>G</TD>
+<TD>47</TD>
+<TD>ld b,a</TD>
+<TD>bit 0,a</TD>
+<TD>ld i,a</TD>
+</TR>
+<TR>
+<TD>72</TD>
+<TD>H</TD>
+<TD>48</TD>
+<TD>ld c,b</TD>
+<TD>bit 1,b</TD>
+<TD>in c,(c)</TD>
+</TR>
+<TR>
+<TD>73</TD>
+<TD>I</TD>
+<TD>49</TD>
+<TD>ld cc</TD>
+<TD>bit 1,c</TD>
+<TD>out (c),c</TD>
+</TR>
+<TR>
+<TD>74</TD>
+<TD>J</TD>
+<TD>4A</TD>
+<TD>ld c,d</TD>
+<TD>bit i,d</TD>
+<TD>adc hl,bc</TD>
+</TR>
+<TR>
+<TD>75</TD>
+<TD>K</TD>
+<TD>4B</TD>
+<TD>ld c,e</TD>
+<TD>bit 1,e</TD>
+<TD>ld bc,(NN)</TD>
+</TR>
+<TR>
+<TD>76</TD>
+<TD>L</TD>
+<TD>4C</TD>
+<TD>ld c,h</TD>
+<TD>bit 1,h </TD>
+</TR>
+<TR>
+<TD>77</TD>
+<TD>M</TD>
+<TD>4D</TD>
+<TD>ld c,l</TD>
+<TD>bit 1,l</TD>
+<TD>reti </TD>
+</TR>
+<TR>
+<TD>78</TD>
+<TD>N</TD>
+<TD>4E</TD>
+<TD>ld c,(hl)</TD>
+<TD>bit 1,(hl) </TD>
+</TR>
+<TR>
+<TD>79</TD>
+<TD>O</TD>
+<TD>4F</TD>
+<TD>ld c,a</TD>
+<TD>bit 1,a</TD>
+<TD>ld r,a </TD>
+</TR>
+<TR>
+<TD>80</TD>
+<TD>P</TD>
+<TD>50</TD>
+<TD>ld d,b</TD>
+<TD>bit 2,b</TD>
+<TD>in d,(c) </TD>
+</TR>
+<TR>
+<TD>81</TD>
+<TD>Q</TD>
+<TD>51</TD>
+<TD>ld d,c</TD>
+<TD>bit 2,c</TD>
+<TD>out (c),d </TD>
+</TR>
+<TR>
+<TD>82</TD>
+<TD>R</TD>
+<TD>52</TD>
+<TD>ld d,d</TD>
+<TD>bit 2,d</TD>
+<TD>sbc hl,de </TD>
+</TR>
+<TR>
+<TD>83</TD>
+<TD>S</TD>
+<TD>53</TD>
+<TD>ld d,e</TD>
+<TD>bit 2,e</TD>
+<TD>ld (NN),de </TD>
+</TR>
+<TR>
+<TD>84</TD>
+<TD>T</TD>
+<TD>54</TD>
+<TD>ld d,h</TD>
+<TD>bit 2,h </TD>
+</TR>
+<TR>
+<TD>85</TD>
+<TD>U</TD>
+<TD>55</TD>
+<TD>ld d,l</TD>
+<TD>bit 2,l </TD>
+</TR>
+<TR>
+<TD>86</TD>
+<TD>V</TD>
+<TD>56</TD>
+<TD>ld d,(hl)</TD>
+<TD>bit 2,(hl)</TD>
+<TD>im 1 </TD>
+</TR>
+<TR>
+<TD>87</TD>
+<TD>W</TD>
+<TD>57</TD>
+<TD>ld d,a</TD>
+<TD>bit 2,a</TD>
+<TD>ld a,i </TD>
+</TR>
+<TR>
+<TD>88</TD>
+<TD>X</TD>
+<TD>58</TD>
+<TD>ld e,b</TD>
+<TD>bit 3,b</TD>
+<TD>in e,(c) </TD>
+</TR>
+<TR>
+<TD>89</TD>
+<TD>Y</TD>
+<TD>59</TD>
+<TD>ld e,c</TD>
+<TD>bit 3,c</TD>
+<TD>out (c),e </TD>
+</TR>
+<TR>
+<TD>90</TD>
+<TD>Z</TD>
+<TD>5A</TD>
+<TD>ld e,d</TD>
+<TD>bit 3,d</TD>
+<TD>adc hl,de </TD>
+</TR>
+<TR>
+<TD>91</TD>
+<TD>[</TD>
+<TD>5B</TD>
+<TD>ld e,e</TD>
+<TD>bit 3,e</TD>
+<TD>ld de,(NN) </TD>
+</TR>
+<TR>
+<TD>92</TD>
+<TD>/</TD>
+<TD>5C</TD>
+<TD>ld e,h</TD>
+<TD>bit 3,h </TD>
+</TR>
+<TR>
+<TD>93</TD>
+<TD>]</TD>
+<TD>5D</TD>
+<TD>ld e,l</TD>
+<TD>bit 3,l </TD>
+</TR>
+<TR>
+<TD>94</TD>
+<TD>^</TD>
+<TD>5E</TD>
+<TD>ld e,(hl)</TD>
+<TD>bit 3,(hl)</TD>
+<TD>im 2 </TD>
+</TR>
+<TR>
+<TD>95</TD>
+<TD>_</TD>
+<TD>5F</TD>
+<TD>ld e,a</TD>
+<TD>bit 3,a</TD>
+<TD>ld a,r </TD>
+</TR>
+<TR>
+<TD>96</TD>
+<TD>ukp</TD>
+<TD>60</TD>
+<TD>ld h,b</TD>
+<TD>bit 4,b</TD>
+<TD>in h,(c) </TD>
+</TR>
+<TR>
+<TD>97</TD>
+<TD>a</TD>
+<TD>61</TD>
+<TD>ld h,c</TD>
+<TD>bit 4,c</TD>
+<TD>out (c),h </TD>
+</TR>
+<TR>
+<TD>98</TD>
+<TD>b</TD>
+<TD>62</TD>
+<TD>ld h,d</TD>
+<TD>bit 4,d</TD>
+<TD>sbc hl,hl </TD>
+</TR>
+<TR>
+<TD>99</TD>
+<TD>c</TD>
+<TD>63</TD>
+<TD>ld h,e</TD>
+<TD>bit 4,e</TD>
+<TD>ld (NN),hl </TD>
+</TR>
+<TR>
+ <TD>100</TD>
+<TD>d</TD>
+<TD>64</TD>
+<TD>ld h,h</TD>
+<TD>bit 4,h </TD>
+</TR>
+<TR>
+<TD>101</TD>
+<TD>e</TD>
+<TD>65</TD>
+<TD>ld h,l</TD>
+<TD>bit 4,1 </TD>
+</TR>
+<TR>
+<TD>102</TD>
+<TD>f</TD>
+<TD>66</TD>
+<TD>ld h,(hl)</TD>
+<TD>bit 4,(hl) </TD>
+</TR>
+<TR>
+<TD>103</TD>
+<TD>g</TD>
+<TD>67</TD>
+<TD>ld h,a</TD>
+<TD>bit 4,a</TD>
+<TD>rrd </TD>
+</TR>
+<TR>
+<TD>104</TD>
+<TD>h</TD>
+<TD>68</TD>
+<TD>ld l,b</TD>
+<TD>bit 5,b</TD>
+<TD>in l,(c) </TD>
+</TR>
+<TR>
+<TD>105</TD>
+<TD>i</TD>
+<TD>69</TD>
+<TD>ld l,c</TD>
+<TD>bit 5,c</TD>
+<TD>out (c),l </TD>
+</TR>
+<TR>
+<TD>106</TD>
+<TD>j</TD>
+<TD>6A</TD>
+<TD>ld l,d</TD>
+<TD>bit 5,d</TD>
+<TD>adc hl,hl </TD>
+</TR>
+<TR>
+<TD>107</TD>
+<TD>k</TD>
+<TD>6B</TD>
+<TD>ld l,e</TD>
+<TD>bit 5,e</TD>
+<TD>ld hl,(NN),sp </TD>
+</TR>
+<TR>
+<TD>108</TD>
+<TD>l</TD>
+<TD>6C</TD>
+<TD>ld l,h</TD>
+<TD>bit 5,h </TD>
+</TR>
+<TR>
+<TD>109</TD>
+<TD>m</TD>
+<TD>6D</TD>
+<TD>ld l,l</TD>
+<TD>bit 5,l </TD>
+</TR>
+<TR>
+<TD>110</TD>
+<TD>n</TD>
+<TD>6E</TD>
+<TD>ld l,(hl)</TD>
+<TD>bit 5,(hl) </TD>
+</TR>
+<TR>
+<TD>111</TD>
+<TD>o</TD>
+<TD>6F</TD>
+<TD>ld l,a</TD>
+<TD>bit 5,a</TD>
+<TD>rld </TD>
+</TR>
+<TR>
+<TD>112</TD>
+<TD>p</TD>
+<TD>70</TD>
+<TD>ld (hl),b</TD>
+<TD>bit 6,b</TD>
+<TD>in f,(c) </TD>
+</TR>
+<TR>
+<TD>113</TD>
+<TD>q</TD>
+<TD>71</TD>
+<TD>ld (hl),c</TD>
+<TD>bit 6,c </TD>
+</TR>
+<TR>
+<TD>114</TD>
+<TD>r</TD>
+<TD>72</TD>
+<TD>ld (hl),d</TD>
+<TD>bit 6,d</TD>
+<TD>sbc hl,sp </TD>
+</TR>
+<TR>
+<TD>115</TD>
+<TD>s</TD>
+<TD>73</TD>
+<TD>ld (hl),e</TD>
+<TD>bit 6,e</TD>
+<TD>ld (NN),sp </TD>
+</TR>
+<TR>
+<TD>116</TD>
+<TD>t</TD>
+<TD>74</TD>
+<TD>ld (hl),h</TD>
+<TD>bit 6,h </TD>
+</TR>
+<TR>
+<TD>117</TD>
+<TD>u</TD>
+<TD>75</TD>
+<TD>ld (hl),l</TD>
+<TD>bit 6,l </TD>
+</TR>
+<TR>
+<TD>118</TD>
+<TD>v</TD>
+<TD>76</TD>
+<TD>halt</TD>
+<TD>bit 6,(hl) </TD>
+</TR>
+<TR>
+<TD>119</TD>
+<TD>w</TD>
+<TD>77</TD>
+<TD>ld (hl),a</TD>
+<TD>bit 6,a </TD>
+</TR>
+<TR>
+<TD>120</TD>
+<TD>x</TD>
+<TD>78</TD>
+<TD>ld a,b</TD>
+<TD>bit 7,b</TD>
+<TD>in a,(c) </TD>
+</TR>
+<TR>
+<TD>121</TD>
+<TD>y</TD>
+<TD>79</TD>
+<TD>ld a,c</TD>
+<TD>bit 7,c</TD>
+<TD>out (c),a </TD>
+</TR>
+<TR>
+<TD>122</TD>
+<TD>z</TD>
+<TD>7A</TD>
+<TD>ld a,d</TD>
+<TD>bit 7,d</TD>
+<TD>adc hl,sp </TD>
+</TR>
+<TR>
+<TD>123</TD>
+<TD>{</TD>
+<TD>7B</TD>
+<TD>ld a,e</TD>
+<TD>bit 7,e</TD>
+<TD>ld sp,(NN) </TD>
+</TR>
+<TR>
+<TD>124</TD>
+<TD>|</TD>
+<TD>7C</TD>
+<TD>lda,h</TD>
+<TD>bit 7,h </TD>
+</TR>
+<TR>
+<TD>125</TD>
+<TD>}</TD>
+<TD>7D</TD>
+<TD>ld al</TD>
+<TD>bit 7,l </TD>
+</TR>
+<TR>
+<TD>126</TD>
+<TD>-</TD>
+<TD>7E</TD>
+<TD>ld a,(hl)</TD>
+<TD>bit 7,(hl) </TD>
+</TR>
+<TR>
+<TD>127</TD>
+<TD>&copy;</TD>
+<TD>7F</TD>
+<TD>ld a,a</TD>
+<TD>bit 7,a </TD>
+</TR>
+<TR>
+<TD>128</TD>
+<TD><IMG SRC="128.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>80</TD>
+<TD>add a,b</TD>
+<TD>res 0,b </TD>
+</TR>
+<TR>
+<TD>129</TD>
+<TD><IMG SRC="129.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>81</TD>
+<TD>add a,c</TD>
+<TD>res 0,c </TD>
+</TR>
+<TR>
+<TD>130</TD>
+<TD><IMG SRC="130.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>82</TD>
+<TD>add a,d</TD>
+<TD>res 0,d </TD>
+</TR>
+<TR>
+<TD>131</TD>
+<TD><IMG SRC="131.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>83</TD>
+<TD>add a,e</TD>
+<TD>res 0,e </TD>
+</TR>
+<TR>
+<TD>132</TD>
+<TD><IMG SRC="132.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>84</TD>
+<TD>add a,h</TD>
+<TD>res 0,h </TD>
+</TR>
+<TR>
+<TD>133</TD>
+<TD><IMG SRC="133.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>85</TD>
+<TD>add a,l</TD>
+<TD>res 0,l </TD>
+</TR>
+<TR>
+<TD>134</TD>
+<TD><IMG SRC="134.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>86</TD>
+<TD>add a,(hl)</TD>
+<TD>res 0,(hl) </TD>
+</TR>
+<TR>
+<TD>135</TD>
+<TD><IMG SRC="135.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>87</TD>
+<TD>add a,a</TD>
+<TD>res 0,a </TD>
+</TR>
+<TR>
+<TD>136</TD>
+<TD><IMG SRC="136.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>88</TD>
+<TD>adc a,b</TD>
+<TD>res 1,b </TD>
+</TR>
+<TR>
+<TD>137</TD>
+<TD><IMG SRC="137.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>89</TD>
+<TD>adc a,c</TD>
+<TD>res 1,c </TD>
+</TR>
+<TR>
+<TD>138</TD>
+<TD><IMG SRC="138.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8A</TD>
+<TD>adc a,d</TD>
+<TD>res 1,d </TD>
+</TR>
+<TR>
+<TD>139</TD>
+<TD><IMG SRC="139.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8B</TD>
+<TD>adc a,e</TD>
+<TD>res 1,e </TD>
+</TR>
+<TR>
+<TD>140</TD>
+<TD><IMG SRC="140.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8C</TD>
+<TD>adc a,h</TD>
+<TD>res 1,h </TD>
+</TR>
+<TR>
+<TD>141</TD>
+<TD><IMG SRC="141.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8D</TD>
+<TD>adc a,l</TD>
+<TD>res 1,i </TD>
+</TR>
+<TR>
+<TD>142</TD>
+<TD><IMG SRC="142.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8E</TD>
+<TD>adc a,(hl)</TD>
+<TD>res 1,(hl) </TD>
+</TR>
+<TR>
+<TD>143</TD>
+<TD><IMG SRC="143.gif" WIDTH="10" HEIGHT="10"></TD>
+<TD>8F</TD>
+<TD>adc a,a</TD>
+<TD>res 1,a</TD>
+</TR>
+<TR>
+<TD>144</TD>
+<TD>(a)</TD>
+<TD>90</TD>
+<TD>sub b</TD>
+<TD>res 2,b </TD>
+</TR>
+<TR>
+<TD>145</TD>
+<TD>(b)</TD>
+<TD>91</TD>
+<TD>sub c</TD>
+<TD>res 2,c </TD>
+</TR>
+<TR>
+<TD>146</TD>
+<TD>(c)</TD>
+<TD>92</TD>
+<TD>sub d</TD>
+<TD>res 2,d </TD>
+</TR>
+<TR>
+<TD>147</TD>
+<TD>(d)</TD>
+<TD>93</TD>
+<TD>sub e</TD>
+<TD>res 2,e </TD>
+</TR>
+<TR>
+<TD>148</TD>
+<TD>(e)</TD>
+<TD>94</TD>
+<TD>sub h</TD>
+<TD>res 2,h </TD>
+</TR>
+<TR>
+<TD>149</TD>
+<TD>(f)</TD>
+<TD>95</TD>
+<TD>sub l</TD>
+<TD>res 2,l </TD>
+</TR>
+<TR>
+<TD>150</TD>
+<TD>(g)</TD>
+<TD>96</TD>
+<TD>sub (hl)</TD>
+<TD>res 2,(hl) </TD>
+</TR>
+<TR>
+<TD>151</TD>
+<TD>(h)</TD>
+<TD>97</TD>
+<TD>sub a</TD>
+<TD>res 2,a </TD>
+</TR>
+<TR>
+<TD>152</TD>
+ <TD>(i)</TD>
+<TD>98</TD>
+<TD>sbc a,b</TD>
+<TD>res 3,b </TD>
+</TR>
+<TR>
+<TD>153</TD>
+<TD>(j)</TD>
+<TD>99</TD>
+<TD>sbc a,c</TD>
+<TD>res 3,c </TD>
+</TR>
+<TR>
+<TD>154</TD>
+<TD>(k)</TD>
+<TD>9A</TD>
+<TD>sbc a,d</TD>
+<TD>res 3,d </TD>
+</TR>
+<TR>
+<TD>155</TD>
+<TD>(l)</TD>
+<TD>9B</TD>
+<TD>sbc a,e</TD>
+<TD>res 3,e </TD>
+</TR>
+<TR>
+<TD>156</TD>
+<TD>(m)</TD>
+<TD>9C</TD>
+<TD>sbc a,h</TD>
+<TD>res 3,h </TD>
+</TR>
+<TR>
+<TD>157</TD>
+<TD>(n)</TD>
+<TD>9D</TD>
+<TD>sbc a,l</TD>
+<TD>res 3,l </TD>
+</TR>
+<TR>
+<TD>158</TD>
+<TD>(o)</TD>
+<TD>9E</TD>
+<TD>sbc a,(hl)</TD>
+<TD>res 3,(hl) </TD>
+</TR>
+<TR>
+<TD>159</TD>
+<TD>(p)</TD>
+<TD>9F</TD>
+<TD>sbc a,a</TD>
+<TD>res 3,a </TD>
+</TR>
+<TR>
+<TD>160</TD>
+<TD>(q)</TD>
+<TD>A0</TD>
+<TD>and b</TD>
+<TD>res 4,b</TD>
+<TD>ldi</TD>
+</TR>
+<TR>
+<TD>161</TD>
+<TD>(r)</TD>
+<TD>A1</TD>
+<TD>and c</TD>
+<TD>res 4,c</TD>
+<TD>cpi </TD>
+</TR>
+<TR>
+<TD>162</TD>
+<TD>(s)</TD>
+<TD>A2</TD>
+<TD>and d</TD>
+<TD>res 4,d</TD>
+<TD>ini </TD>
+</TR>
+<TR>
+<TD>163</TD>
+<TD>(t)</TD>
+<TD>A3</TD>
+<TD>and e</TD>
+<TD>res 4,e</TD>
+<TD>outi </TD>
+</TR>
+<TR>
+<TD>164</TD>
+<TD>(u)</TD>
+<TD>A4</TD>
+<TD>and h</TD>
+<TD>res 4,h </TD>
+</TR>
+<TR>
+<TD>165</TD>
+<TD>RND</TD>
+<TD>A5</TD>
+<TD>and l</TD>
+<TD>res 4,l </TD>
+</TR>
+<TR>
+<TD>166</TD>
+<TD>INKEY$</TD>
+<TD>A6</TD>
+<TD>and (hl)</TD>
+<TD>res 4,(hl) </TD>
+</TR>
+<TR>
+<TD>167</TD>
+<TD>PI</TD>
+<TD>A7</TD>
+<TD>and a</TD>
+<TD>res 4,a </TD>
+</TR>
+<TR>
+<TD>168</TD>
+<TD>FN</TD>
+<TD>A8</TD>
+<TD>xor b</TD>
+<TD>res 5,b</TD>
+<TD>ldd </TD>
+</TR>
+<TR>
+<TD>169</TD>
+<TD>POINT</TD>
+<TD>A9</TD>
+<TD>xor c</TD>
+<TD>res 5,c</TD>
+<TD>cpd </TD>
+</TR>
+<TR>
+<TD>170</TD>
+<TD>SCREEN$</TD>
+<TD>AA</TD>
+<TD>xor d</TD>
+<TD>res 5,d</TD>
+<TD>ind </TD>
+</TR>
+<TR>
+<TD>171</TD>
+<TD>ATTR</TD>
+<TD>AB</TD>
+<TD>xor e</TD>
+<TD>res 5,e</TD>
+<TD>outd </TD>
+</TR>
+<TR>
+<TD>172</TD>
+<TD>AT</TD>
+<TD>AC</TD>
+<TD>xor h</TD>
+<TD>res 5,h </TD>
+</TR>
+<TR>
+<TD>173</TD>
+<TD>TAB</TD>
+<TD>AD</TD>
+<TD>xor l</TD>
+<TD>res 5,i </TD>
+</TR>
+<TR>
+<TD>174</TD>
+<TD>VAL$</TD>
+<TD>AE</TD>
+<TD>xor (hl)</TD>
+<TD>res 5,(hl) </TD>
+</TR>
+<TR>
+<TD>175</TD>
+<TD>CODE</TD>
+<TD>AF</TD>
+<TD>xor a</TD>
+<TD>res 5,a </TD>
+</TR>
+<TR>
+<TD>176</TD>
+<TD>VAL</TD>
+<TD>B0</TD>
+<TD>or b</TD>
+<TD>res 6,b</TD>
+<TD>ldir </TD>
+</TR>
+<TR>
+<TD>177</TD>
+<TD>LEN</TD>
+<TD>B1</TD>
+<TD>or c</TD>
+<TD>res 6,c</TD>
+<TD>cpir </TD>
+</TR>
+<TR>
+<TD>178</TD>
+<TD>SIN</TD>
+<TD>B2</TD>
+<TD>or d</TD>
+<TD>res 6,d</TD>
+<TD>inir </TD>
+</TR>
+<TR>
+<TD>179</TD>
+<TD>COS</TD>
+<TD>B3</TD>
+<TD>or e</TD>
+<TD>res 6,e</TD>
+<TD>otir </TD>
+ </TR>
+<TR>
+<TD>180</TD>
+<TD>TAN</TD>
+<TD>B4</TD>
+<TD>or h</TD>
+<TD>res 6,h </TD>
+</TR>
+<TR>
+<TD>181</TD>
+<TD>ASN</TD>
+<TD>B5</TD>
+<TD>or l</TD>
+<TD>res 6,l </TD>
+</TR>
+<TR>
+<TD>182</TD>
+<TD>ACS</TD>
+<TD>B6</TD>
+<TD>or (hl)</TD>
+<TD>res 6,(hl) </TD>
+</TR>
+<TR>
+<TD>183</TD>
+<TD>ATN</TD>
+<TD>B7</TD>
+<TD>or a</TD>
+<TD>res 6,a </TD>
+</TR>
+<TR>
+<TD>184</TD>
+<TD>LN</TD>
+<TD>B8</TD>
+<TD>cp b</TD>
+<TD>res 7,b</TD>
+<TD>lddr </TD>
+</TR>
+<TR>
+<TD>185</TD>
+<TD>EXP</TD>
+<TD>B9</TD>
+<TD>cp c</TD>
+<TD>res 7,c</TD>
+<TD>cpdr </TD>
+</TR>
+<TR>
+<TD>186</TD>
+<TD>INT</TD>
+<TD>BA</TD>
+<TD>cp d</TD>
+<TD>res 7,d</TD>
+<TD>indr </TD>
+</TR>
+<TR>
+<TD>187</TD>
+<TD>SOR</TD>
+<TD>BB</TD>
+<TD>cp e</TD>
+<TD>res 7,e</TD>
+<TD>otdr </TD>
+</TR>
+<TR>
+<TD>188</TD>
+<TD>SGN</TD>
+<TD>BC</TD>
+<TD>cp h</TD>
+<TD>res 7,h </TD>
+</TR>
+<TR>
+<TD>189</TD>
+<TD>ABS</TD>
+<TD>BD</TD>
+<TD>cp l</TD>
+<TD>res 7,l </TD>
+</TR>
+<TR>
+<TD>190</TD>
+<TD>PEEK</TD>
+<TD>BE</TD>
+<TD>cp (hl)</TD>
+<TD>res 7,(hl) </TD>
+</TR>
+<TR>
+<TD>191</TD>
+<TD>IN</TD>
+<TD>BF</TD>
+<TD>cp a</TD>
+<TD>res 7,a </TD>
+</TR>
+<TR>
+<TD>192</TD>
+<TD>USR</TD>
+<TD>C0</TD>
+<TD>ret nz</TD>
+<TD>set 0,b </TD>
+</TR>
+<TR>
+<TD>193</TD>
+<TD>STR$</TD>
+<TD>C1</TD>
+<TD>pop bc</TD>
+<TD>set 0,c </TD>
+</TR>
+<TR>
+<TD>194</TD>
+<TD>CHR$</TD>
+<TD>C2</TD>
+<TD>jp nz,NN</TD>
+<TD>set 0,d </TD>
+</TR>
+<TR>
+<TD>195</TD>
+<TD>NOT</TD>
+<TD>C3</TD>
+<TD>jp NN</TD>
+<TD>set 0,e </TD>
+</TR>
+<TR>
+<TD>196</TD>
+<TD>BIN</TD>
+<TD>C4</TD>
+<TD>call nz,NN</TD>
+<TD>set 0,h </TD>
+</TR>
+<TR>
+<TD>197</TD>
+<TD>OR</TD>
+<TD>C5</TD>
+<TD>push bc</TD>
+<TD>set 0,l </TD>
+</TR>
+<TR>
+<TD>198</TD>
+<TD>AND</TD>
+<TD>C6</TD>
+<TD>add a,N</TD>
+<TD>set 0,(hl) </TD>
+</TR>
+<TR>
+<TD>199</TD>
+<TD>&lt;=</TD>
+<TD>C7</TD>
+<TD>rst 0</TD>
+<TD>set 0,a </TD>
+</TR>
+<TR>
+<TD>200</TD>
+<TD>&gt;=</TD>
+<TD>C8</TD>
+<TD>ret z</TD>
+<TD>set 1,b </TD>
+</TR>
+<TR>
+<TD>201</TD>
+<TD>&lt;&gt;</TD>
+<TD>C9</TD>
+<TD>ret</TD>
+<TD>set l,c </TD>
+</TR>
+<TR>
+<TD>202</TD>
+<TD>LINE</TD>
+<TD>CA</TD>
+<TD>jp z,NN</TD>
+<TD>set l,d </TD>
+</TR>
+<TR>
+<TD>203</TD>
+<TD>THEN</TD>
+<TD>CB</TD>
+<TD>set l,e </TD>
+</TR>
+<TR>
+<TD>204</TD>
+<TD>TO</TD>
+<TD>CC</TD>
+<TD>call z,NN</TD>
+<TD>set l,h </TD>
+</TR>
+<TR>
+<TD>205</TD>
+<TD>STEP</TD>
+<TD>CD</TD>
+<TD>call NN</TD>
+<TD>set 1,l </TD>
+</TR>
+<TR>
+<TD>206</TD>
+<TD>DEF FN</TD>
+<TD>CE</TD>
+<TD>adc a,N</TD>
+<TD>set 1,(hl) </TD>
+</TR>
+<TR>
+<TD>207</TD>
+<TD>CAT</TD>
+<TD>CF</TD>
+<TD>rst B</TD>
+<TD>set 1,a </TD>
+</TR>
+<TR>
+<TD>208</TD>
+<TD>FORMAT</TD>
+<TD>D0</TD>
+<TD>ret nc</TD>
+<TD>set 2,b </TD>
+</TR> 
+<TR>
+<TD>209</TD>
+<TD>MOVE</TD>
+<TD>D1</TD>
+<TD>pop de</TD>
+<TD>set 2,c </TD>
+</TR>
+<TR>
+<TD>210</TD>
+<TD>ERASE</TD>
+<TD>D2</TD>
+<TD>jpnc,NN</TD>
+<TD>set 2,d </TD>
+</TR>
+<TR>
+<TD>211</TD>
+<TD>OPEN #</TD>
+<TD>D3</TD>
+<TD>out (N),a</TD>
+<TD>set 2,e </TD>
+</TR>
+<TR>
+<TD>212</TD>
+<TD>CLOSE #</TD>
+<TD>D4</TD>
+<TD>call nc,NN</TD>
+<TD>set 2,h </TD>
+</TR>
+<TR>
+<TD>213</TD>
+<TD>MERGE</TD>
+<TD>D5</TD>
+<TD>push de</TD>
+<TD>set 2,l </TD>
+</TR>
+<TR>
+<TD>214</TD>
+<TD>VERIFY</TD>
+<TD>D6</TD>
+<TD>sub N</TD>
+<TD>set 2,(hl) </TD>
+</TR>
+<TR>
+<TD>215</TD>
+<TD>BEEP</TD>
+<TD>D7</TD>
+<TD>rst 16</TD>
+<TD>set 2,a </TD>
+</TR>
+<TR>
+<TD>216</TD>
+<TD>CIRCLE</TD>
+<TD>D8</TD>
+<TD>ret c</TD>
+<TD>set 3,b </TD>
+</TR>
+<TR>
+<TD>217</TD>
+<TD>INK</TD>
+<TD>D9</TD>
+<TD>exx</TD>
+<TD>set 3,c </TD>
+</TR>
+<TR>
+<TD>218</TD>
+<TD>PAPER</TD>
+<TD>DA</TD>
+<TD>jpc,NN</TD>
+<TD>set 3,d </TD>
+</TR>
+<TR>
+<TD>219</TD>
+<TD>FLASH</TD>
+<TD>DB</TD>
+<TD>in a,(N)</TD>
+<TD>set 3,e </TD>
+</TR>
+<TR>
+<TD>220</TD>
+<TD>BRIGHT</TD>
+<TD>DC</TD>
+<TD>call c,NN</TD>
+<TD>set 3,h </TD>
+</TR>
+<TR>
+<TD>221</TD>
+<TD>INVERSE</TD>
+<TD>DD</TD>
+<TD>[prefixes<BR>
+instructions<BR>
+using ix</TD>
+<TD>set 3,l </TD>
+</TR>
+<TR>
+<TD>222</TD>
+<TD>OVER</TD>
+<TD>DE</TD>
+<TD>sbc a,N</TD>
+<TD>set 3,(hl) </TD>
+</TR>
+<TR>
+<TD>223</TD>
+<TD>OUT</TD>
+<TD>DF</TD>
+<TD>rst 24</TD>
+<TD>set 3,a </TD>
+</TR>
+<TR>
+<TD>224</TD>
+<TD>LPRINT</TD>
+<TD>E0</TD>
+<TD>ret po</TD>
+<TD>set 4,b </TD>
+</TR>
+<TR>
+<TD>225</TD>
+<TD>LLIST</TD>
+<TD>E1</TD>
+<TD>pop hl</TD>
+<TD>set 4,c </TD>
+</TR>
+<TR>
+<TD>226</TD>
+<TD>STOP</TD>
+<TD>E2</TD>
+<TD>jp po,NN</TD>
+<TD>set 4,d </TD>
+</TR>
+<TR>
+<TD>227</TD>
+<TD>READ</TD>
+<TD>E3</TD>
+<TD>ex (sp),hl</TD>
+<TD>set 4,e </TD>
+</TR>
+<TR>
+<TD>228</TD>
+<TD>DATA</TD>
+<TD>E4</TD>
+<TD>call po,NN</TD>
+<TD>set 4,h </TD>
+</TR>
+<TR>
+<TD>229</TD>
+<TD>RESTORE</TD>
+<TD>E5</TD>
+<TD>push hl</TD>
+<TD>set 4,l </TD>
+</TR>
+<TR>
+<TD>230</TD>
+<TD>NEW</TD>
+<TD>E6</TD>
+<TD>and N</TD>
+<TD>set 4,(hl) </TD>
+</TR>
+<TR>
+<TD>231</TD>
+<TD>BORDER</TD>
+<TD>E7</TD>
+<TD>rst 32</TD>
+<TD>set 4,a </TD>
+</TR>
+<TR>
+<TD>232</TD>
+<TD>CONTINUE</TD>
+<TD>E8</TD>
+<TD>ret pe</TD>
+<TD>set 5,b </TD>
+</TR>
+<TR>
+<TD>233</TD>
+<TD>DIM</TD>
+<TD>E9</TD>
+<TD>jp (hl)</TD>
+<TD>set 5,c </TD>
+</TR>
+<TR>
+<TD>234</TD>
+<TD>REM</TD>
+<TD>EA</TD>
+<TD>jp pe,NN</TD>
+<TD>set 5,d </TD>
+</TR>
+<TR>
+<TD>235</TD>
+<TD>FOR</TD>
+<TD>EB</TD>
+<TD>ex de,hl</TD>
+<TD>set 5,e </TD>
+</TR>
+<TR>
+<TD>236</TD>
+<TD>GO TO</TD>
+<TD>EC</TD>
+<TD>call pe,NN</TD>
+<TD>set 5,h </TD>
+</TR>
+<TR>
+<TD>237</TD>
+<TD>GO SUB</TD>
+<TD>ED</TD>
+<TD>&nbsp;</TD>
+<TD>set 5,l </TD>
+</TR>
+<TR>
+<TD>238</TD>
+<TD>INPUT</TD>
+<TD>EE</TD>
+<TD>xor N</TD>
+<TD>set 5,(hl) </TD>
+</TR>
+<TR>
+<TD>239</TD>
+<TD>LOAD</TD>
+<TD>EF</TD>
+<TD>rst 40</TD>
+<TD>set 5,a </TD>
+</TR>
+<TR>
+<TD>240</TD>
+<TD>LIST</TD>
+<TD>F0</TD>
+<TD>ret p</TD>
+<TD>set 6,b </TD>
+</TR>
+<TR>
+<TD>241</TD>
+<TD>LET</TD>
+<TD>Fl</TD>
+<TD>pop af</TD>
+<TD>set 6,c </TD>
+</TR>
+<TR>
+<TD>242</TD>
+<TD>PAUSE</TD>
+<TD>F2</TD>
+<TD>jp p,NN</TD>
+<TD>set 6,d </TD>
+</TR>
+<TR>
+<TD>243</TD>
+<TD>NEXT</TD>
+<TD>F3</TD>
+<TD>di</TD>
+<TD>set 6,e </TD>
+</TR>
+<TR>
+<TD>244</TD>
+<TD>POKE</TD>
+<TD>F4</TD>
+<TD>call p,NN</TD>
+<TD>set 6,h </TD>
+</TR>
+<TR>
+<TD>245</TD>
+<TD>PRINT</TD>
+<TD>F5</TD>
+<TD>push af</TD>
+<TD>set 6,l </TD>
+</TR>
+<TR>
+<TD>246</TD>
+<TD>PLOT</TD>
+<TD>F6</TD>
+<TD>or N</TD>
+<TD>set 6,(hl) </TD>
+</TR>
+<TR>
+<TD>247</TD>
+<TD>RUN</TD>
+<TD>F7</TD>
+<TD>rst 48</TD>
+<TD>set 6,a </TD>
+</TR>
+<TR>
+<TD>248</TD>
+<TD>SAVE</TD>
+<TD>F8</TD>
+<TD>ret m</TD>
+<TD>set 7,b </TD>
+</TR>
+<TR>
+<TD>249</TD>
+<TD>RANDOMIZE</TD>
+<TD>F9</TD>
+<TD>ld sp,hl</TD>
+<TD>set 7,c </TD>
+</TR>
+<TR>
+<TD>250</TD>
+<TD>IF</TD>
+<TD>FA</TD>
+<TD>jp m,NN</TD>
+<TD>set 7,d </TD>
+</TR>
+<TR>
+<TD>251</TD>
+<TD>CLS</TD>
+<TD>FB</TD>
+<TD>ei</TD>
+<TD>set 7,e </TD>
+</TR>
+<TR>
+<TD>252</TD>
+<TD>DRAW</TD>
+<TD>FC</TD>
+<TD>call m,NN</TD>
+<TD>set 7,h </TD>
+</TR>
+<TR>
+<TD>253</TD>
+<TD>CLEAR</TD>
+<TD>FD</TD>
+<TD>[prefixes<BR>
+instructions<BR>
+using iy]</TD>
+<TD>set 7,l </TD>
+</TR>
+<TR>
+<TD>254</TD>
+<TD>RETURN</TD>
+<TD>FE</TD>
+<TD>cp N</TD>
+<TD>set 7,(hl) </TD>
+</TR>
+<TR>
+<TD>255</TD>
+<TD>COPY</TD>
+<TD>FF</TD>
+<TD>rst 56</TD>
+<TD>set 7,a</TD>
+<TD>&nbsp;</TD>
+</TR>
+</TABLE>
+<H5 ALIGN="center"><A HREF="zxmanchap26.html">[Back]</A> <A HREF="index.html">[Contents]</A> <A HREF="zxmanappb.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

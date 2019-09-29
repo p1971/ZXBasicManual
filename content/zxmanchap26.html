@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 26</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 26</H2>
+<H3>Using machine code</H3>
+<H4>Summary</H4>
+<P>USR with numeric argument </P>
+<P>This chapter is written for those who understand Z80 machine
+code, the set of instructions that the Z80 processor chip uses.
+If you do not, but would like to, there are plenty of books about
+it. You want to get one called something along the lines of
+&quot;Z80 Machine code [or assembly language] for the absolute
+beginner&quot;, and if it mentions the Spectrum, so much the
+better.</P>
+<P>These programs are normally written in assembly language,
+which, although cryptic, are not too difficult to understand with
+practice. (You can see the assembly language instructions in
+Appendix A.) However, to run them on the computer you need to
+code the program into a sequence of bytes in this form it is
+called machine code. This translation is usually done by the
+computer itself, using a program called an assembler. There is no
+assembler built in to the Spectrum, but you may well be able to
+buy one on cassette. Failing that, you will have to do the
+translation yourself, provided that the program is not too long. </P>
+<P>Let's take as an example the program </P>
+<PRE><CODE><B>
+	ld bc, 99 
+	ret
+</B></CODE></PRE>
+<P>which loads the bc register pair with 99. This translates into
+the four machine code bytes 1, 99, 0 (for ld bc, 99) and 201 (for
+ret). (If you look up 1 and 201 in Appendix A, you will find ld
+bc, NN - where NN stands for any two byte number - and ret.) </P>
+<P>When you have got your machine code program, the next step is
+to get it into the computer. (An assembler would probably do this
+automatically.) You need to decide whereabouts in memory to put
+it, and the best thing is to make extra space for it between the
+BASIC area and the user defined graphics. </P>
+<P>Suppose, for instance, that you have a 16K Spectrum. To start
+off with, the top end of RAM has </P>
+<P>If you type </P>
+<PRE><CODE><B>
+       	CLEAR 32499
+</B></CODE></PRE>
+<P>this will give you a space of 100 (for good measure) bytes
+starting at address 32500. </P>
+<P>To put in the machine code program, you would run a BASIC
+program something like </P>
+<PRE><CODE><B>
+		10 LET a=32500
+		20 READ n: POKE a,n
+		30 LET a=a+1:GOTO 20
+		40 DATA 1,99,0,201
+</B></CODE></PRE>
+<P>(This will stop with report E Out of DATA when it has filled
+in the four bytes you specified.) </P>
+<P>To run the machine code, you use the function USR but this
+time with a numeric argument, the starting address. Its result is
+the value of the bc register on return from the machine code
+program, so if you do </P>
+<PRE><CODE><B>
+     	PRINT USR 32500
+</B></CODE></PRE>
+<P>you get the answer 99. </P>
+<P>The return address to the BASIC is stacked in the usual way,
+so return is by a Z80 ret instruction. You should not use the iy
+and i registers in a machine code routine. </P>
+<P>You can save your machine code program easily enough with </P>
+<PRE><CODE><B>
+     	SAVE &quot;some name&quot; CODE 32500,4
+</B></CODE></PRE>
+<P>On the face of it, there is no way of saving it so that when
+loaded it automatically runs itself, but you can get round this
+by using a BASIC program. </P>
+<PRE><CODE><B>
+     	10 LOAD &quot;&quot; CODE 32500,4
+     	20 PRINT USR 32500
+</B></CODE></PRE>
+<P>Do first </P>
+<PRE><CODE><B>
+       	SAVE &quot;some name&quot; LINE
+</B></CODE></PRE>
+<P>and then </P>
+<PRE><CODE><B>
+       	SAVE &quot;xxxx&quot; CODE 32500,4
+       	LOAD &quot;some name&quot;
+</B></CODE></PRE>
+<P ALIGN="center">will then load and automatically run the BASIC
+program, and the BASIC program will load and run the machine
+code. </P>
+<H5 ALIGN="center">
+<A HREF="zxmanchap25.html">[Back]</A>
+<A HREF="index.html">[Contents]</A>
+<A HREF="zxmanappa.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

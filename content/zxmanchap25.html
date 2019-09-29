@@ -1,0 +1,522 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 25</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 25</H2>
+<H3>The system variables</H3>
+<P>The bytes in memory from 23552 to 23733 are set aside for
+specific uses by the system. You can peek them to find out
+various things about the system, and some of them can be usefully
+poked. They are listed here with their uses. </P>
+<P>These are called system variables, and have names, but do not
+confuse them with the variables used by the BASIC. The computer
+will not recognize the names as referring to system variables,
+and they are given solely as mnemonics for we humans. </P>
+<P>The abbreviations in column 1 have the following meanings: </P>
+<TABLE BORDER="0">
+<TR>
+<TD>X</TD>
+<TD>The variables should not be poked because the system
+might crash. </TD>
+</TR>
+<TR>
+<TD>N</TD>
+<TD>Poking the variable will have no lasting effect</TD>
+</TR>
+</TABLE>
+<P>The number in column 1 is the number of bytes in the variable.
+For two bytes, the first one is the less significant byte the
+reverse of what you might expect. So to poke a value v to a two
+byte variable at address n, use </P>
+<PRE><CODE><B>
+	POKE n,v-256*1NT (v/256) 
+	POKE n+1,lNT (v/256) 
+</B></CODE></PRE>
+<P>and to peek its value, use the expression </P>
+<PRE><CODE><B>
+	PEEK n+256*PEEK (n+1)
+</B></CODE></PRE>
+<TABLE BORDER="1">
+<TR>
+<TD>Notes</TD>
+<TD>Address</TD>
+<TD>Name</TD>
+<TD>Contents</TD>
+</TR>
+<TR>
+<TD>N8</TD>
+<TD>23552</TD>
+<TD>KSTATE</TD>
+<TD>Used in reading the keyboard.</TD>
+</TR>
+<TR>
+<TD>Nl</TD>
+<TD>23560</TD>
+<TD>LAST K</TD>
+<TD>Stores newly pressed key. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23561</TD>
+<TD>REPDEL</TD>
+<TD>Time (in 50ths of a second in 60ths of a second in N.
+America) that a key must be held down before it repeats.
+This starts off at 35, but you can POKE in other values. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23562</TD>
+<TD>REPPER</TD>
+<TD>Delay (in 50ths of a second in 60ths of a second in
+N. America) between successive repeats of a key held
+down: initially 5. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23563</TD>
+<TD>DEFADD</TD>
+<TD>Address of arguments of user defined function if one
+is being evaluated; otherwise 0. </TD>
+</TR>
+<TR>
+<TD>Nl</TD>
+<TD>23565</TD>
+<TD>K DATA</TD>
+<TD>Stores 2nd byte of colour controls entered from
+keyboard . </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23566</TD>
+<TD>TVDATA</TD>
+<TD>Stores bytes of coiour, AT and TAB controls going to
+television. </TD>
+</TR>
+<TR>
+<TD>X38</TD>
+<TD>23568</TD>
+<TD>STRMS</TD>
+<TD>Addresses of channels attached to streams. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23606</TD>
+<TD>CHARS</TD>
+<TD>256 less than address of character set (which starts
+with space and carries on to the copyright symbol).
+Normally in ROM, but you can set up your own in RAM and
+make CHARS point to it. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23608</TD>
+<TD>RASP</TD>
+<TD>Length of warning buzz. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23609</TD>
+<TD>PIP</TD>
+<TD>Length of keyboard click. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23610</TD>
+<TD>ERR NR</TD>
+<TD>1 less than the report code. Starts off at 255 (for
+1) so PEEK 23610 gives 255. </TD>
+</TR>
+<TR>
+<TD>X1</TD>
+<TD>23611</TD>
+<TD>FLAGS</TD>
+<TD>Various flags to control the BASIC system. </TD>
+</TR>
+<TR>
+<TD>X1</TD>
+<TD>23612</TD>
+<TD>TV FLAG</TD>
+<TD>Flags associated with the television. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23613</TD>
+<TD>ERR SP</TD>
+<TD>Address of item on machine stack to be used as error
+return. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23615</TD>
+<TD>LIST SP</TD>
+<TD>Address of return address from automatic listing. </TD>
+</TR>
+<TR>
+<TD>N1</TD>
+<TD>23617</TD>
+<TD>MODE</TD>
+<TD>Specifies K, L, C. E or G cursor. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23618</TD>
+<TD>NEWPPC</TD>
+<TD>Line to be jumped to. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23620</TD>
+<TD>NSPPC</TD>
+<TD>Statement number in line to be jumped to. Poking
+first NEWPPC and then NSPPC forces a jump to a specified
+statement in a line. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23621</TD>
+<TD>PPC</TD>
+<TD>Line number of statement currently being executed. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23623</TD>
+<TD>SUBPPC</TD>
+<TD>Number within line of statement being executed. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23624</TD>
+<TD>BORDCR</TD>
+<TD>Border colour * 8; also contains the attributes
+normally used for the lower half of the screen. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23625</TD>
+<TD>E PPC</TD>
+<TD>Number of current line (with program cursor). </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23627</TD>
+<TD>VARS</TD>
+<TD>Address of variables. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23629</TD>
+<TD>DEST</TD>
+<TD>Address of variable in assignment. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23631</TD>
+<TD>CHANS</TD>
+<TD>Address of channel data. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23633</TD>
+<TD>CURCHL</TD>
+<TD>Address of information currently being used for input
+and output. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23635</TD>
+<TD>PROG</TD>
+<TD>Address of BASIC program. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23637</TD>
+<TD>NXTLIN</TD>
+<TD>Address of next line in program. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23639</TD>
+<TD>DATADD</TD>
+<TD>Address of terminator of last DATA item. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23641</TD>
+<TD>E LINE</TD>
+<TD>Address of command being typed in. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23643</TD>
+<TD>K CUR</TD>
+<TD>Address of cursor. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23645</TD>
+<TD>CH ADD</TD>
+<TD>Address of the next character to be interpreted: the
+character after the argument of PEEK, or the NEWLINE at
+the end of a POKE statement. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23647</TD>
+<TD>X PTR</TD>
+<TD>Address of the character after the ? marker. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23649</TD>
+<TD>WORKSP</TD>
+<TD>Address of temporary work space. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23651</TD>
+<TD>STKBOT</TD>
+<TD>Address of bottom of calculator stack. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23653</TD>
+<TD>STKEND</TD>
+<TD>Address of start of spare space. </TD>
+</TR>
+<TR>
+<TD>N1</TD>
+<TD>23655</TD>
+<TD>BREG</TD>
+<TD>Calculator's b register. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23656</TD>
+<TD>MEM</TD>
+<TD>Address of area used for calculator's memory.
+(Usually MEMBOT, but not always.) </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23658</TD>
+<TD>FLAGS2</TD>
+<TD>More flags. </TD>
+</TR>
+<TR>
+<TD>X1</TD>
+<TD>23659</TD>
+<TD>DF SZ</TD>
+<TD>The number of lines (including one blank line) in the
+lower part of the screen. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23660</TD>
+<TD>S TOP</TD>
+<TD>The number of the top program line in automatic
+listings. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23662</TD>
+<TD>OLDPPC</TD>
+<TD>Line number to which CONTINUE jumps. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23664</TD>
+<TD>OSPCC</TD>
+<TD>Number within line of statement to which CONTINUE
+jumps. </TD>
+</TR>
+<TR>
+<TD>N1</TD>
+<TD>23665</TD>
+<TD>FLAGX</TD>
+<TD>Various flags. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23666</TD>
+<TD>STRLEN</TD>
+<TD>Length of string type destination in assignment. </TD>
+</TR>
+<TR>
+<TD>N2</TD>
+<TD>23668</TD>
+<TD>T ADDR</TD>
+<TD>Address of next item in syntax table (very unlikely
+to be useful). </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23670</TD>
+<TD>SEED</TD>
+<TD>The seed for RND. This is the variable that is set by
+RANDOMIZE. </TD>
+</TR>
+<TR>
+<TD>3</TD>
+<TD>23672</TD>
+<TD>FRAMES</TD>
+<TD>3 byte (least significant first), frame counter.
+Incremented every 20ms. See Chapter 18. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23675</TD>
+<TD>UDG</TD>
+<TD>Address of 1st user defined graphic You can change
+this for instance to save space by having fewer user
+defined graphics. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23677</TD>
+<TD>COORDS</TD>
+<TD>x-coordinate of last point plotted. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23678</TD>
+<TD>&nbsp;</TD>
+<TD>y-coordinate of last point plotted. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23679</TD>
+<TD>P POSN</TD>
+<TD>33 column number of printer position </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23680</TD>
+<TD>PR CC</TD>
+<TD>Full address of next position for LPRINT to print at (in ZX printer buffer). Legal values 5B00 - 5B1F. [Not used in 128K mode or when certain peripherals are attached]</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23682</TD>
+<TD>ECHO E</TD>
+<TD>33 column number and 24 line number (in lower half)
+of end of input buffer. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23684</TD>
+<TD>DF CC</TD>
+<TD>Address in display file of PRINT position. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23686</TD>
+<TD>DFCCL</TD>
+<TD>Like DF CC for lower part of screen. </TD>
+</TR>
+<TR>
+<TD>X1</TD>
+<TD>23688</TD>
+<TD>S POSN</TD>
+<TD>33 column number for PRINT position </TD>
+</TR>
+<TR>
+<TD>X1</TD>
+<TD>23689</TD>
+<TD>&nbsp;</TD>
+<TD>24 line number for PRINT position. </TD>
+</TR>
+<TR>
+<TD>X2</TD>
+<TD>23690</TD>
+<TD>SPOSNL</TD>
+<TD>Like S POSN for lower part </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23692</TD>
+<TD>SCR CT</TD>
+<TD>Counts scrolls: it is always 1 more than the number
+of scrolls that will be done before stopping with scroll?
+If you keep poking this with a number bigger than 1 (say
+255), the screen will scroll on and on without asking
+you. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23693</TD>
+<TD>ATTR P</TD>
+<TD>Permanent current colours, etc (as set up by colour
+statements). </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23694</TD>
+<TD>MASK P</TD>
+<TD>Used for transparent colours, etc. Any bit that is 1
+shows that the corresponding attribute bit is taken not
+from ATTR P, but from what is already on the screen. </TD>
+</TR>
+<TR>
+<TD>N1</TD>
+<TD>23695</TD>
+<TD>ATTR T</TD>
+<TD>Temporary current colours, etc (as set up by colour
+items). </TD>
+</TR>
+<TR>
+<TD>N1</TD>
+<TD>23696</TD>
+<TD>MASK T</TD>
+<TD>Like MASK P, but temporary. </TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>23697</TD>
+<TD>P FLAG</TD>
+<TD>More flags. </TD>
+</TR>
+<TR>
+<TD>N30</TD>
+<TD>23698</TD>
+<TD>MEMBOT</TD>
+<TD>Calculator's memory area; used to store numbers that
+cannot conveniently be put on the calculator stack. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23728</TD>
+<TD>NMIADD</TD>
+<TD>This is the address of a user supplied NMI address which is read by the standard ROM when a peripheral activates the NMI.<BR>Probably intentionally disabled so that the effect is to perform a reset if both locations hold zero, but do nothing if the locations hold a non-zero value.<BR> Interface 1's with serial number greater than 87315 will initialize these locations to 0 and 80 to allow the RS232 &quot;T&quot; channel to use a variable line width. 23728 is the current print position and 23729 the width - default 80.</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23730</TD>
+<TD>RAMTOP</TD>
+<TD>Address of last byte of BASIC system area. </TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>23732</TD>
+<TD>P RAMT</TD>
+<TD>Address of last byte of physical RAM. </TD>
+</TR>
+</TABLE>
+<P>This program tells you the first 22 bytes of the variables
+area: </P>
+<PRE><CODE><B>
+ 	10 FOR n=0 TO 21
+ 	20 PRINT PEEK (PEEK 23627+256*PEEK 23628+n)
+ 	30 NEXT n
+</B></CODE></PRE>
+<P>Try to match up the control variable n with the descriptions
+above. Now change line 20 to </P>
+<PRE><CODE><B>
+	20 PRINT PEEK (23755+n)
+</B></CODE></PRE>
+<P ALIGN="center">This tells you the first 22 bytes of the
+program area. Match these up with the program itself. </P>
+<H5 ALIGN="center"><A HREF="zxmanchap24.html">[Back]</A> <A HREF="index.html">[Contents]</A> <A HREF="zxmanchap26.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

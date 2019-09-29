@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 13</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 13</H2>
+<H3>Conditions</H3>
+<H4>Summary</H4>
+<P><B>AND, OR, NOT</B> </P>
+<P>We saw in Chapter 3 how an IF statement takes the form</P>
+<PRE><CODE><B>
+        	IF condition THEN . . .
+</B></CODE></PRE>
+<P>The conditions there were the relations (=, &lt;, &gt;, &lt;=,
+&gt;= and &lt;&gt;), which compare two numbers or two strings.
+You can also combine several of these, using the logical
+operations, AND, OR and NOT.</P>
+<P>One relation AND another relation is true whenever both
+relations are true, so you could have a line like:</P>
+<PRE><CODE><B>
+        	IF a$=&quot;yes&quot; AND x&gt;0 THEN PRINT x
+</B></CODE></PRE>
+<P>in which x only gets printed if a$=''yes&quot; and x&gt;0. The
+BASIC here is so close to English that it hardly seems worth
+spelling out the:details. As in English, you can join lots of
+relations together with AND, and then the whole lot is true if
+all the individual relations are.</P>
+<P>One relation OR another is true whenever at least one of the
+two relations is true. (Remember that it is still true if both
+the relations are true; this is something that English doesn't
+always imply.)</P>
+<P>The NOT relationship turns things upside down. The NOT
+relation is true whenever the relation is false, and false
+whenever it is true!</P>
+<P>Logical expressions can be made with relations and AND, OR and
+NOT, just as numerical expressions can be made with numbers and
++, - and so on; you can even put them in brackets if necessary.
+They have priorities in the same way as the usual operations +,
+-, *, / and <IMG SRC="crsrup.gif" WIDTH="10" HEIGHT="15">, do: OR
+has the lowest priority, then AND, then NOT, then the relations,
+and the usual operations.</P>
+<P>NOT is really a function, with an argument and a result, but
+its priority is much lower than that of other functions.
+Therefore its argument does not need brackets unless it contains
+AND or OR (or both). NOT a=b means the same as NOT (a=b) (and the
+same as a&lt;&gt;b, of course).</P>
+<P>&lt;&gt; is the negation of = in the sense that it is true if,
+and only if, = is false. In other words,</P>
+<PRE><CODE>
+        	a&lt;&gt;b is the same as NOT a=b 
+and also
+        	NOT a&lt;&gt;b is the same as a=b
+</CODE></PRE>
+<P>Persuade yourself that &gt;= and &lt;= are the negations of
+&lt; and &gt; respectively: thus you can always get rid of NOT
+from in front of a relation by changing the relation.</P>
+<P>Also,</P>
+<PRE><B>	       	NOT (a first logical expression AND a second) 
+</B>
+is the same as
+<B>
+        	NOT (the first) OR NOT (the second)
+</B>
+and
+<B>
+        	NOT (a first logical expression OR a second) 
+</B>
+is the same as
+<B>
+        	NOT (the first) AND NOT (the second).
+</B></PRE>
+<P>Using this you can work NOTs through brackets until eventually
+they are all applied to relations, and then you can get rid of
+them. Logically speaking, NOT is unnecessary, although you might
+still find that using it makes a program clearer.</P>
+<P>The following section is quite complicated, and can be skipped
+by the fainthearted!</P>
+<P>Try<BR>
+</P>
+<PRE><CODE><B>		PRINT 1=2,1&lt;&gt;2
+</B></CODE></PRE>
+<P>which you might expect to give a syntax error. In fact, as far
+as the computer is concerned, there is no such thing as a logical
+value: instead it uses ordinary numbers, subject to a few rules.</P>
+<OL TYPE="i">
+<LI>=, &lt;, &gt;, &lt;=, &gt;= and &lt;&gt; all give numeric
+results: 1 for true, and 0 for false. Thus the PRINT
+command above printed 0 for '1=2', which is false, and 1
+for '1&lt;&gt;2', which is true.</LI>
+<LI>In<BR>
+<PRE><B>
+        	IF condition THEN . . . 
+</B></PRE>
+<P>the condition can be actually any numeric expression.
+If its value is 0, then it counts as false, and any other
+value including the value of 1 that a true relation
+gives) counts as true. Thus the IF statement means
+exactly the same as</P>
+<PRE><B>
+        	IF condition &lt;&gt;0 THEN . . .
+</B></PRE>
+</LI>
+<LI>AND, OR and NOT are also number-valued operations. <TABLE BORDER="0">
+<TR>
+<TD>x AND y has the value</TD>
+<TD>{x if y is true (non-zero)}<BR>
+{0 (false), if y is false (zero)</TD>
+</TR>
+<TR>
+<TD>x OR y has the value</TD>
+<TD>{1 (true), if y is true (non zero)<BR>
+{x, if y is false (zero)</TD>
+</TR>
+<TR>
+<TD>NOT x has the value</TD>
+<TD>{0 (false), if x is true (non-zero)<BR>
+{1 (true), if x is false (zero)</TD>
+</TR>
+</TABLE>
+</LI>
+<LI>(Notice that 'true' means 'non-zero' when we're checking
+a given value, but it means '1' when we're producing a
+new one.)</LI>
+</OL>
+<P>Read through the chapter again in the light of this
+revelation, making sure that it all works.</P>
+<P>In the expressions x AND y, x OR y and NOT x, x and y will
+usually take the values 0 and 1 for false and true. Work out the
+ten different combinations (four for AND, four for OR and two for
+NOT) and check that they do what the chapter leads you to expect
+them to do.</P>
+<P>Try this program:</P>
+<PRE><CODE><B>
+        	10 INPUT a
+        	20 INPUT b
+        	30 PRINT (a AND a&gt;=b)+(b AND a&lt;b)
+        	40 GO TO 10
+</B></CODE></PRE>
+<P>Each time it prints the larger of the two numbers a and b.
+Convince yourself that you can think of</P>
+<PRE><CODE><B> 
+	x AND y 
+</B></CODE></PRE>
+<P>as meaning</P>
+<PRE><CODE><B> 
+        	x if y (else the result is 0) 
+</B></CODE></PRE>
+<P>and of </P>
+<PRE><CODE><B> 
+        	x OR y
+</B></CODE></PRE>
+<P>as meaning </P>
+<PRE><CODE><B> 
+        	x unless y (in which case the result is 1)
+</B></CODE></PRE>
+<P>An expression using AND or OR like this is called a
+conditional expression. An example using OR could be</P>
+<PRE><CODE><B> 
+        	LET total price=price less tax*(1.15 OR v$=&quot;zero rated&quot;)
+</B></CODE></PRE>
+<P>Notice how AND tends to go with addition (because its default
+value is 0), and OR tends to go with multiplication (because its
+default value is 1).</P>
+<P>You can also make string valued conditional expressions, but
+only using AND. </P>
+<PRE>x$ AND y has the value 	{x$ if y is non-zero
+                       	{&quot;&quot; if y is zero
+</PRE>
+<P>so it means x$ if y (else the empty string).</P>
+<P>Try this program, which inputs two strings and puts them in
+alphabetical order.</P>
+<P><CODE><B>		
+	10 INPUT &quot;type in two strings&quot;,a$,b$<BR>
+20 IF a$&gt;b$ THEN LET c$=a$: LET a$=b$: LET b$=c$<BR>
+30 PRINT a$;&quot; &quot;;(&quot;&lt;&quot; AND
+a$&lt;b$)+(&quot;=&quot; AND a$=b$);&quot; &quot;;b$<BR>
+40 GO TO 10 </B></CODE></P>
+<P>Exercise</P>
+<OL>
+<LI>BASIC can sometimes work along different lines from
+English. Consider, for instance, the English clause 'If a
+doesn't equal b or c'. How would you write this in BASIC?
+The answer is not <PRE><B>
+	IF A&lt;&gt;B OR C 
+	  nor is it 
+	IF Alt;&gt;B OR Alt;&gt;C
+</B></PRE>
+</LI>
+</OL>
+<H5 ALIGN="center"><A HREF="zxmanchap12.html">[Back]</A>
+<A HREF="index.html">[Contents]</A> <A HREF="zxmanchap14.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

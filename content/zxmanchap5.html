@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Chapter 5</TITLE>
+</HEAD>
+<BODY>
+<H2>CHAPTER 5</H2>
+<H3>Subroutines</H3>
+<H4>Summary</H4>
+GO SUB, RETURN
+<P>Sometimes different parts of the program will have rather similar jobs to do, and you will find yourself typing the same lines in two or more times; however this is not necessary. You can type the lines in once, in a form known as a subroutine, and then use, or call, them anywhere else in the program without having to type them in again.</P>
+<P>To do this, you use the statements GO SUB (GO to SUBroutine) and RETURN. This takes the form</P>
+<CODE><B><PRE>        GO SUB n
+</PRE></B></CODE>
+<P>where n is the line number of the first line in the subroutine. It is just like GO TO n except that the computer remembers where the GO SUB statement was so that it can come back again after doing the subroutine. It does this by putting the line number and the statement number within the line (together these constitute the retum address) on top of a pile of them (the GO SUB stack);</P>
+<CODE><B><PRE>        RETURN
+</PRE></B></CODE>
+<P>takes the top <I>return address</I> off the GO SUB stack, and goes to the statement after it.</P>
+<P>As an example, let's look at the number guessing program again. Retype it as follows:</P>
+<CODE><B><PRE>        10 REM &quot;A rearranged guessing game&quot;
+        20 INPUT a: CLS 
+        30 INPUT &quot;Guess the number &quot;,b
+        40 IF a=b THEN PRINT &quot;Correct&quot;: STOP 
+        50 IF a<b THEN GO SUB 100
+        60 IF a>b THEN GO SUB 100
+        70 GO TO 30
+        100 PRINT &quot;Try again&quot;
+        110 RETURN 
+</PRE></B></CODE>
+<P>The GO TO statement in line 70 is very important because otherwise the program will run on into the subroutine and cause an error (<B>7 RETURN without GO SUB</B>) when the RETURN statement is reached.</P>
+<P>Here is another rather silly program illustrating the use of GO SUB.</P>
+<CODE><B><PRE>        100 LET x=10
+        110 GO SUB 500
+        120 PRINT s
+        130 LET x=x+4
+        140 GO SUB 500
+        150 PRINT s
+        160 LET x=x+2
+        170 GO SUB 500
+        180 PRINT s
+        190 STOP 
+        500 LET s=0
+        510 FOR y=1 TO x
+        520 LET s=s+y
+        530 NEXT y
+        540 RETURN 
+</PRE></B></CODE>
+<P>When this program is run, see if you can work out what is happening. The subroutine starts at line 500.</P>
+<P>A subroutine can happily call another, or even itself (a subroutine that calls itself is recursive), so don't be afraid of having several layers.</P>
+<CENTER><H5>
+<A HREF="./zxmanchap4.html">[Back]</A>
+<A HREF="./index.html">[Contents]</A>
+<A HREF="./zxmanchap6.html">[Next]</A>
+</H5></CENTER>
+</BODY>
+</HTML>

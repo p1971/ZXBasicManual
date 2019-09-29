@@ -1,0 +1,1215 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual - Appendix C</TITLE>
+</HEAD>
+<BODY>
+<H2>APPENDIX C (Part 1)</H2>
+<H3>A description of the ZX Spectrum for reference</H3>
+<P>The first section of this appendix is a repeat of that part of
+the Introduction concerning the keyboard and screen. </P>
+<H4>The keyboard</H4>
+<P>ZX Spectrum characters comprise not only the single symbols
+(letters, digits, etc), but also the compound tokens (keywords,
+function names, etc) and all these are entered trom the keyboard
+rather than being spelled out. To obtain all these functions and
+commands some keys have five or more distinct meanings, given
+partly by shifting the keys (i.e. pressing either the CAPS SHIFT
+key or the SYMBOL SHIFT key at the same time as the required one)
+and partly by having the machine in different modes. </P>
+<P>The mode is indicated by the cursor, a flashing letter that
+shows where the next character from the keyboard will be
+inserted. </P>
+<P>K (for keywords) mode automatically replaces L mode when the
+machine is expecting a command or program line (rather than INPUT
+data), and from its position on the line it knows it should
+expect a line number or a keyword. This is at the beginning of
+the line, or just after THEN, or just after: (except in a
+string). If unshifted, the next key will be interpreted as either
+a keyword (written on the keys), or a digit. </P>
+<P>L (for letters) mode normally occurs at all other times. If
+unshifted, the next key will be interpreted as the main symbol on
+that key, in lower case for letters. </P>
+<P>In both K and L modes, SYMBOL SHIFT and a key will be
+interpreted as the subsidiary red character on the key and CAPS
+SHIFT with a digit key will be interpreted as the control
+function written in white above the key. CAPS SHIFT with other
+keys does not affect the keywords in K mode, and in L mode it
+converts lower case to capitals. </P>
+<P>C (for capitals) mode is a variant of L mode in which all
+letters appear as capitals. CAPS LOCK causes a change from L mode
+to C mode or back again. </P>
+<P>E (for extended) mode is used for obtaining further
+characters, mostly tokens. It occurs after both shift keys are
+pressed together, and lasts for one key depression only. In this
+mode, a letter gives one character or token (shown in green above
+it) if unshifted, and another (shown in red below it) if pressed
+with either shift. A digit key gives a token if pressed with
+SYMBOL SHIFT; otherwise it gives a colour control sequence. </P>
+<P>G (for graphics) mode occurs after GRAPHICS (CAPS SHIFT and 9)
+is pressed, and lasts until it is pressed again. A digit key will
+give a mosaic graphic, quit GRAPHICS or DELETE, and each of the
+letter keys apart from V, W, X, Y and Z, will give a user-defined
+graphic. </P>
+<P>If any key is held down for more than about 2 or 3 seconds, it
+will start repeating. </P>
+<P>Keyboard input appears in the bottom half of the screen as it
+is typed, each character (single symbol or compound token) being
+inserted just before the cursor. The cursor can be moved left
+with CAPS SHIFT and 5, or right with CAPS SHIFT and 8. The
+character before the cursor can be deleted with DELETE (CAPS
+SHIFT and 0). (Note: the whole line can be deleted by typing EDIT
+(CAPS SHIFT and 1) followed by ENTER.) </P>
+<P>When ENTER is pressed, the line is executed, entered into the
+program, or used as INPUT data as appropriate, unless it contains
+a syntax error. In this case a flashing ? appears next to the
+error. </P>
+<P>As program lines are entered, a listing is displayed in the
+top half of the screen. The manner in which the listing is
+produced is rather complicated, and explained more fully in
+Chapter 2. The last line entered is called the current line and
+is indicated by the symbol &gt;, but this can be changed by using
+the keys <IMG SRC="crsrdown.gif" ALT="cursor down" WIDTH="10" HEIGHT="10"> (CAPS SHIFT and 6) and <IMG SRC="crsrup.gif" ALT="cursor up" WIDTH="10" HEIGHT="10"> (CAPS SHIFT and 7). If
+EDIT (CAPS SHIFT and 1) is pressed, the current line is brought
+down to the bottom part of the screen and can be edited. </P>
+<P>When a command is executed or a program run, output is
+displayed in the top half of the screen and remains until a
+program line is entered, or ENTER is pressed with an empty line,
+or <IMG SRC="crsrup.gif" ALT="cursor up" WIDTH="10" HEIGHT="10">
+or <IMG SRC="crsrdown.gif" ALT="cursor down" WIDTH="10" HEIGHT="10"> is pressed. In the bottom part appears a report
+giving a code (digit or letter) referring you to Appendix B, a
+brief verbal summary of what Appendix B says, the number of the
+line containing the last statement executed (or 0 for a command)
+and the position of the statement within the line. The report
+remains on the screen until a key is pressed (and indicates K
+mode). </P>
+<P>In certain circumstances, CAPS SHIFT with the SPACE key acts
+as a BREAK, stopping the computer with report D or L. This is
+recognised </P>
+<OL TYPE="i">
+<LI>at the end of a statement while a program is running, or </LI>
+<LI>while the computer is using the cassette recorder or
+printer.</LI>
+</OL>
+<H4>The television screen</H4>
+<P>This has 24 lines, each 32 characters long, and is divided
+into two parts. The top part is at most 22 lines and displays
+either a listing or program output. When printing in the top part
+has reached the bottom, it all scrolls up one line; if this would
+involve losing a line that you have not had a chance to see yet,
+then the computer stops with the message scroll?. Pressing the
+keys N, SPACE or STOP will make the program stop with report D
+BREAK- CONT repeats; any other key will let the scrolling
+continue. The bottom part is used for inputting commands, program
+lines, and INPUT data, and also for displaying reports. The
+bottom part starts of as two lines (the upper one blank), but it
+expands to accommodate whatever is typed in. When it reaches the
+current print position in the top half, further expansions will
+make the top half scroll up. </P>
+<P>Each character position has attributes specifying its paper
+(background) and ink (foreground) colours, a two-level
+brightness, and whether it flashes or not. The available colours
+are black, blue, red, magenta, green, yellow and white. </P>
+<P>The edge of the screen can be set to any of the colours using
+the border statement. </P>
+<P>A character position is divided into 8x8 pixels and high
+resolution graphics are obtained by setting the pixels
+individually to show either the ink or paper colour for that
+character position. </P>
+<P>The attributes at a character position are adjusted whenever a
+character is written there or a pixel is plotted The exact manner
+of the adjustment is determined by the pnnting parameters. of
+which there are two sets (called permanent and temporary) of six:
+the PAPER, INK, FLASH, BRIGHT, INVERSE and OVER parameters.
+Permanent parameters for the top part are set up by PAPER, INK,
+etc, statements, and last until further notice. (Initially they
+are black ink on white paper. With normal brightness, no
+flashing, normal video and no overprinting). Permanent parameters
+for the bottom part use the border colour as the paper colour,
+with a black or white contrasting ink colour, normal brightness,
+no flashing, normal video and no overprinting. </P>
+<P>Temporary parameters are set up by PAPER, INK, etc, items,
+which are embedded in PRINT, LPRINT, INPUT, PLOT, DRAW and CIRCLE
+statements, and also by PAPER, INK, etc control characters when
+they are printed to the television - they are followed by a
+further byte to specify the parameter value. Temporary parameters
+last only to the end of the PRINT (or whatever) statement, or, in
+INPUT statements, until some INPUT data is needed from the
+keyboard, when they are replaced by the permanent parameters. </P>
+<P ALIGN="center">PAPER and INK parameters are in the range 0 to
+9. Parameters 0 to 7 are the colours used when a character is
+printed: </P>
+<DIV ALIGN="center"><CENTER>
+<TABLE BORDER="0">
+<TR>
+<TD>0</TD>
+<TD>black</TD>
+</TR>
+<TR>
+<TD>1</TD>
+<TD>blue</TD>
+</TR>
+<TR>
+<TD>2</TD>
+<TD>red</TD>
+</TR>
+<TR>
+<TD>3</TD>
+<TD>magenta</TD>
+</TR>
+<TR>
+<TD>4</TD>
+<TD>green</TD>
+</TR>
+<TR>
+<TD>5</TD>
+<TD>cyan</TD>
+</TR>
+<TR>
+<TD>6</TD>
+<TD>yellow</TD>
+</TR>
+<TR>
+<TD>7</TD>
+<TD>white</TD>
+</TR>
+</TABLE>
+</CENTER></DIV>
+<P>Parameter 8 ('transparent') specifies that the colour on the
+screen is to be left unchanged when a character is printed. </P>
+<P>Parameter 9 ('contrast') specifies that the colour in question
+(paper or ink) is to be made either white or black to show up
+against the other colour. </P>
+<P>FLASH and BRIGHT parameters are 0,1 or 8: 1 means that
+flashing or brightness is turned on, 0 that it is turned off, and
+8 ('transparent') that it is left unchanged at any character
+position. </P>
+<P>OVER and INVERSE parameters are 0 or 1: </P>
+<P><B>OVER 0</B> new characters obliterate old ones </P>
+<P><B>OVER 1</B> the bit patterns of the old and new characters
+are combined using an 'exclusive or' operation (overprinting) </P>
+<P><B>INVERSE 0</B> new characters are printed as ink colour on
+paper colour (normal video) </P>
+<P><B>INVERSE 1</B> new characters are printed as paper colour on
+ink colour (inverse video) </P>
+<P>When a TAB control character is received by the television,
+two more bytes are expected to specify a tab stop n (less
+significant byte first). This is reduced modulo 32 to n0 (say),
+and then sufficient spaces are printed to move the printing
+position into column n0. When a comma control character is
+received, then sufficient spaces (at least one) are printed to
+move the printing position into column 0 or column 16. When an
+ENTER control character is received, the printing position is
+moved on to the next line. </P>
+<H4>The printer</H4>
+<P>Output to the ZX printer is via a buffer one line (32
+characters) long, and a line is sent to the printer </P>
+<OL TYPE="i">
+<LI>when printing spills over from one line to the next,</LI>
+<LI>when an ENTER character is received, </LI>
+<LI>at the end of the program, if there is anything left
+unprinted,</LI>
+<LI>when a TAB control or comma control moves the printing
+position on to a new line. </LI>
+</OL>
+<P>TAB controls and comma controls output spaces in the same way
+as on the television. </P>
+<P>The AT control changes the printing position using the column
+number, and ignores the line number. </P>
+<P>The printer is affected by INVERSE and OVER controls (and also
+statements) in the same way as the screen is, but not by PAPER,
+INK, FLASH or BRIGHT. </P>
+<P>The printer will stop with error B if BREAK is pressed. If the
+printer is absent the output will simply be lost. </P>
+<H2>APPENDIX C (Part 2)</H2>
+<H3>The BASIC</H3>
+<P>Numbers are stored to an accuracy of 9 or 10 digits. The
+largest number you can get is about 10<SUP>38</SUP>, and the
+smallest (positive) number is about 4*10<SUP>-39</SUP>. </P>
+<P>A number is stored in the ZX Spectrum in floating point binary
+with one exponent byte e (l&lt;=e&lt;=255), and four mantissa
+bytes m (1/2&lt;=m&lt;l). This represents the number m*2<SUP>e-128</SUP>.
+</P>
+<P>Since 1/2&lt;=m&lt;l, the most significant bit of the mantissa
+m is always 1. Therefore in actual fact we can replace it with a
+bit to show the sign - 0 for positive numbers, 1 for negative. </P>
+<P>Small integers have a special representation in which the
+first byte is 0, the second is a sign byte (0 or FFh) and the
+third and fourth are the integer in twos complement form, the
+less significant byte first. </P>
+<P>Numeric variables have names of arbitrary length, starting
+with a letter and continuing with letters and digits. Spaces and
+colour controls are ignored and all letters are converted to
+lower-case letters. </P>
+<P>Control variables of FOR-NEXT loops have names a single letter
+long. </P>
+<P>Numeric arrays have names a single letter long, which may be
+the same as the name of a simple variable. They may have
+arbitrarily many dimensions of arbitrary size. Subscripts start
+at 1. </P>
+<P>Strings are completely flexible in length. The name of a
+string consists of a single letter followed by $. </P>
+<P>String arrays can have arbitrarily many dimensions of
+arbitrary size. The name is a single letter followed by $ and may
+not be the same as the name of a string. All the strings in a
+given array have the same fixed length, which is specified as an
+extra, final dimension in the DIM statement. Subscripts start at
+1. </P>
+<P>Slicing: Substrings of strings may be specified using slicers.
+A slicer can be </P>
+<OL>
+<LI>empty or </LI>
+<LI>numerical expression or </LI>
+<LI>optional numerical expression TO optional numerical
+expression </LI>
+</OL>
+<P>and is used in expressing a substring either by </P>
+<P>(a) string expression (slicer) </P>
+<P>(b) string array variable (subscript,..., subscript, slicer) </P>
+<P>which means the same as </P>
+<P>string array variable (subscript . . . , subscript) (slicer) </P>
+<P>In (a), suppose the string expression has the value s$. </P>
+<P>If the slicer is empty, the result is s$ considered as a
+substring of itself. </P>
+<P>If the slicer is a numerical expression with value m, then the
+result is the mth character of s$ (a substring of length 1). </P>
+<P>If the slicer has the form (iii), then suppose the first
+numerical expression has the value m (the default value is 1),
+and the second, n (the default value is the length of s$). </P>
+<P>If 1&lt;=m&lt;=n&lt;=the length of s$ then the result is the
+substring of s$ starting with the mth character and ending with
+the nth. If 0&lt;=n&amp;ltm then the result is the empty string.
+Otherwise, error 3 results. </P>
+<P>Slicing is performed before functions or operations are
+evaluated, unless brackets dictate otherwise. </P>
+<P>Substrings can be assigned to (see LET). </P>
+<P>If a string quote is to be written in a string literal, then
+it must be doubled. </P>
+<H3>Functions</H3>
+<P>The argument of a function does not need brackets if it is a
+constant or a (possibly subscripted or sliced) variable. </P>
+<TABLE BORDER="1">
+<TR>
+<TD>Function</TD>
+<TD>Type of argument<BR>
+(x)</TD>
+<TD>Result </TD>
+</TR>
+<TR>
+<TD VALIGN="top">ABS</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Absolute magnitude </TD>
+</TR>
+<TR>
+<TD VALIGN="top">ACS</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Arccosine in radians.<BR>
+Error A if x not in the range -1 to +1 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">AND</TD>
+<TD VALIGN="top">binary operation, right operand always a
+number. </TD>
+<TD><TABLE BORDER="0">
+<TR>
+<TD ROWSPAN="2">Numeric left operand: A <B>AND</B>
+B = </TD>
+<TD>A if B&lt;&gt;0</TD>
+</TR>
+<TR>
+<TD>0 if B=0</TD>
+</TR>
+<TR>
+<TD ROWSPAN="2">String left operand:A$ <B>AND</B>
+B = </TD>
+<TD>A$ if B&lt;&gt;0</TD>
+</TR>
+<TR>
+<TD>A$ if B=0 </TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">ASN</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Arcsine in radians.<BR>
+Error A if x not in the range -1 to +1 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">ATN</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Arctangent in radians </TD>
+</TR>
+<TR>
+<TD VALIGN="top">ATTR </TD>
+<TD VALIGN="top">two arguments, x and y, both numbers;
+enclosed in brackets</TD>
+<TD VALIGN="top">A number whose binary form codes the
+attributes of line x, column y on the television. Bit 7
+(most significant) is 1 for flashing, 0 for not flashing.
+Bit 6 is 1 for bright, 0 for normal. Bits 5 to 3 are the
+paper colour. Bits 2 to 0 are the ink colour. Error B
+unless 0&lt;=x&lt;=23 and 0&lt;=y&lt;=31</TD>
+</TR>
+<TR>
+<TD VALIGN="top">BIN</TD>
+<TD>&nbsp;</TD>
+<TD VALIGN="top">This is not really a function, but an
+alternative notation for numbers: BIN followed by a
+sequence of 0s and 1s is the number with such a
+representation in binary. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CHR$</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">The character whose code is x, rounded
+to the nearest integer </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CODE</TD>
+<TD VALIGN="top">string</TD>
+<TD VALIGN="top">The code of the first character in x (or
+0 if x is the empty string) </TD>
+</TR>
+<TR>
+<TD VALIGN="top">COS</TD>
+<TD VALIGN="top">number (in radians)</TD>
+<TD VALIGN="top">Cosine x </TD>
+</TR>
+<TR>
+<TD VALIGN="top">EXP</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">e<SUP>x</SUP> </TD>
+</TR>
+<TR>
+<TD VALIGN="top">FN</TD>
+<TD>&nbsp;</TD>
+<TD VALIGN="top">FN followed by a letter calls up a
+user-defined function (see DEF). The arguments must be
+enclosed in brackets; even if there are no arguments the
+brackets must still be present. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">IN</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">The result of inputting at processor level from port x (0&lt;=x&lt;=FFFFh) (loads the bc register pair with x and does the assembly language instruction in a(c))</TD>
+</TR>
+<TR>
+<TD VALIGN="top">INKEY$</TD>
+<TD VALIGN="top">none</TD>
+<TD VALIGN="top">Reads the keyboard. The result is the
+character representing (in L or C mode) the key pressed
+if there is exactly one, else the empty string. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">INT</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Integer part (always rounds down) </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LEN</TD>
+<TD VALIGN="top">string</TD>
+<TD VALIGN="top">Length </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LN</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Natural logarithm (to base e).<BR>
+Error A if x&lt;=0</TD>
+</TR>
+<TR>
+<TD VALIGN="top">NOT</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">0 if x&lt;&gt;0, 1 if x=0. NOT has priority 4 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">OR</TD>
+<TD VALIGN="top">binary operation, both operands numbers</TD>
+<TD VALIGN="top"><TABLE BORDER="0">
+<TR>
+<TD ROWSPAN="2">a <B>OR</B> b =</TD>
+<TD>1 if b&lt;&gt;0</TD>
+</TR>
+<TR>
+<TD>a if b=0</TD>
+</TR>
+</TABLE>
+<P><B>OR</B> has priority 2 </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">PEEK</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">The value of the byte in memory whose
+address is x (rounded to the nearest integer). Error B if
+x is not in the range 0 to 65535 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">PI</TD>
+<TD VALIGN="top">none</TD>
+<TD VALIGN="top"><IMG SRC="pi.gif" WIDTH="15" HEIGHT="15">
+(3.14159265 . . . ) </TD>
+</TR>
+<TR>
+<TD VALIGN="top">POINT</TD>
+<TD VALIGN="top">Two arguments, x and y, both numbers;
+enclosed in brackets</TD>
+<TD VALIGN="top">1 if the pixel at (x,y) is ink colour. 0
+if it is paper colour. Error B unless 0&lt;=x&lt;=255 and
+0&lt;=y&lt;= 175 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RND</TD>
+<TD VALIGN="top">none</TD>
+<TD VALIGN="top">The next pseudorandom number in a
+sequence generated by taking the powers of 75 modulo
+65537, subtracting 1 and dividing by 65536. 0&lt;=y&lt; 1
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">SCREEN$</TD>
+<TD VALIGN="top">Two arguments, x and y, both numbers;
+enclosed in brackets</TD>
+<TD VALIGN="top">The character that appears, either
+normally or inverted, on the television at line x, column
+y. Gives the empty string, if the character is not
+recognised. Error B unless 0&lt;=x&lt;=23 and
+0&lt;=y&lt;=31 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SGN</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Signum: the sign (-1 for negative, 0 for
+zero or +1 for positive) of x </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SIN</TD>
+<TD VALIGN="top">number(in radians)</TD>
+<TD VALIGN="top">Sine x </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SQR</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Square root.<BR>
+Error A if x&lt;0</TD>
+</TR>
+<TR>
+<TD VALIGN="top">STR$</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">The string of characters that would be
+displayed if x were printed </TD>
+</TR>
+<TR>
+<TD VALIGN="top">TAN</TD>
+<TD VALIGN="top">number(in radians)</TD>
+<TD VALIGN="top">Tangent </TD>
+</TR>
+<TR>
+<TD VALIGN="top">USR</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Calls the machine code subroutine whose
+starting address is x. On return, the result is the
+contents of the bc register pair </TD>
+</TR>
+<TR>
+<TD VALIGN="top">USR</TD>
+<TD VALIGN="top">string</TD>
+<TD VALIGN="top">The address of the bit pattern for the
+user-defined graphic corresponding to x.<BR>
+Error A if x is not a single letter between a and u, or a
+user-defined graphic </TD>
+</TR>
+<TR>
+<TD VALIGN="top">VAL</TD>
+<TD VALIGN="top">string</TD>
+<TD VALIGN="top">Evaluates x (without its bounding
+quotes) as a numerical expression.<BR>
+Error C if x contains a syntax error, or gives a string
+value. Other errors possible, depending on the expression
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">VAL$</TD>
+<TD VALIGN="top">string</TD>
+<TD VALIGN="top">Evaluates x (without its bounding
+quotes) as a string expression.<BR>
+Error C if x contains a syntax error or gives a numeric
+value. Other errors possible, as for VAL </TD>
+</TR>
+<TR>
+<TD VALIGN="top">&#45;</TD>
+<TD VALIGN="top">number</TD>
+<TD VALIGN="top">Negation </TD>
+</TR>
+</TABLE>
+<P>The following are binary operations: </P>
+<TABLE BORDER="1">
+<TR>
+<TD>+</TD>
+<TD COLSPAN="2">Addition (on numbers), or concatenation
+(on strings) </TD>
+</TR>
+<TR>
+<TD>-</TD>
+<TD COLSPAN="2">Subtraction </TD>
+</TR>
+<TR>
+<TD>*</TD>
+<TD COLSPAN="2">Multiplication </TD>
+</TR>
+<TR>
+<TD>/</TD>
+<TD COLSPAN="2">Division </TD>
+</TR>
+<TR>
+<TD><IMG SRC="./crsrup.gif" ALT="to the power of"></TD>
+<TD COLSPAN="2">Raising to a power. Error B if the left
+operand is negative </TD>
+</TR>
+<TR>
+<TD>=</TD>
+<TD COLSPAN="2">Equals </TD>
+</TR>
+<TR>
+<TD>&gt;</TD>
+<TD>Greater than</TD>
+<TD ROWSPAN="4">Both operands must be of the same type.
+The result is a number 1, if the comparison holds and 0
+if it does not </TD>
+</TR>
+<TR>
+<TD>&lt;</TD>
+<TD>Less than </TD>
+</TR>
+<TR>
+<TD>&lt;=</TD>
+<TD>Less than or equal to </TD>
+</TR>
+<TR>
+<TD>&gt;=</TD>
+<TD>Greater than or equal to </TD>
+</TR>
+<TR>
+<TD>&lt;&gt;</TD>
+<TD COLSPAN="2">Not equal to </TD>
+</TR>
+</TABLE>
+<P>Functions and operations have the following priorities: </P>
+<TABLE BORDER="1">
+<TR>
+<TD>Operation</TD>
+<TD>Priority </TD>
+</TR>
+<TR>
+<TD>Subscripting and slicing</TD>
+<TD>12 </TD>
+</TR>
+<TR>
+<TD>All functions except NOT and unary minus</TD>
+<TD>11 </TD>
+</TR>
+<TR>
+<TD><IMG SRC="crsrup.gif" ALT="To the power of.." WIDTH="8" HEIGHT="10"></TD>
+<TD>10 </TD>
+</TR>
+<TR>
+<TD>Unary minus (i.e. minus just used to negate
+something)</TD>
+<TD>0 </TD>
+</TR>
+<TR>
+<TD>*, /</TD>
+<TD>8 </TD>
+</TR>
+<TR>
+<TD>+, - (minus used to subtract one number from another)</TD>
+<TD>6 </TD>
+</TR>
+<TR>
+<TD>=, &gt;, &lt;, &lt;=, &gt;=, &lt;&gt;</TD>
+<TD>5 </TD>
+</TR>
+<TR>
+<TD>NOT</TD>
+<TD>4 </TD>
+</TR>
+<TR>
+<TD>AND</TD>
+<TD>3 </TD>
+</TR>
+<TR>
+<TD>OR</TD>
+<TD>2 </TD>
+</TR>
+</TABLE>
+<H4>Statements</H4>
+<P>In this list, </P>
+<TABLE BORDER="0">
+<TR>
+<TD>a</TD>
+<TD>represents a single letter </TD>
+</TR>
+<TR>
+<TD>v</TD>
+<TD>represents a variable </TD>
+</TR>
+<TR>
+<TD>x, y, z</TD>
+<TD>represent numerical expressions </TD>
+</TR>
+<TR>
+<TD>m, n</TD>
+<TD>represent numerical expressions that are rounded to
+the nearest integer </TD>
+</TR>
+<TR>
+<TD>e</TD>
+<TD>represents an expression </TD>
+</TR>
+<TR>
+<TD>f</TD>
+<TD>represents a string valued expression </TD>
+</TR>
+<TR>
+<TD>s</TD>
+<TD>represents a sequence of statements separated by
+colons </TD>
+</TR>
+<TR>
+<TD>c</TD>
+<TD>represents a sequence of colour items, each
+terminated by commas, or semi-colons; a colour item has
+the form of a PAPER, INK, FLASH, BRIGHT, INVERSE or OVER
+statement. </TD>
+</TR>
+</TABLE>
+<P>Note that arbitrary expressions are allowed everywhere (except
+for the line number at the beginning of a statement). </P>
+<P>All statements except INPUT, DEF and DATA can be used either
+as commands or in programs (although they can be more sensible in
+one than the other). A command or program line can have several
+statements, separated by colons (:). There is no restriction on
+whereabouts in a line any particular statement can occur -
+although see IF and REM. </P>
+<TABLE BORDER="1">
+<TR>
+<TD VALIGN="top">BEEP x, y</TD>
+<TD VALIGN="top">Sounds a note through the loudspeaker
+for x seconds at a pitch y semitones above middle C (or
+below if y is negative). </TD>
+</TR>
+<TR>
+<TD VALIGN="top">BORDER m</TD>
+<TD VALIGN="top">Sets the colour of the border of the
+screen and also the paper colour for the lower part of
+the screen.<BR>
+Error K is m not in the range 0 to 7. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">BRIGHT</TD>
+<TD VALIGN="top">Sets brightness of characters
+subsequently printed. n=0 for normal, 1 for bright. 8 for
+transparent.<BR>
+Error K if n not 0, 1 or 8 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CAT</TD>
+<TD VALIGN="top">Does not work without Microdrive, etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CIRCLE x, y, z</TD>
+<TD VALIGN="top">Draws an arc of a circle, centre (x,y),
+radius z </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CLEAR</TD>
+<TD VALIGN="top">Deletes all variables, freeing the space
+ they occupied.<BR>
+Does RESTORE and CLS, resets the PLOT position to the
+bottom left-hand corner and clears the GO SUB stack </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CLEAR n</TD>
+<TD VALIGN="top">Like CLEAR. but if possible changes the
+system variable RAMTOP to n and puts the new GO SUB stack
+there </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CLOSE #</TD>
+<TD VALIGN="top">Does not work without Microdrive, etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CLS</TD>
+<TD VALIGN="top">(Clear Screen). Clears the display file </TD>
+</TR>
+<TR>
+<TD VALIGN="top">CONTINUE</TD>
+<TD VALIGN="top">Continues the program, starting where it
+left off last time it stopped with report other than 0.
+If the report was 9 or L, then continues with the
+following statement (taking jumps into account);
+otherwise repeats the one where the error occurred. <BR>
+If the last report was in a command line then CONTINUE
+will attempt to continue the command line and will either
+go into a loop if the error was in 0:1, give report 0 if
+it was in 0: 2, or give error N if it was 0: 3 or
+greater.<BR>
+CONTINUE appears as CONT on the keyboard </TD>
+</TR>
+<TR>
+<TD VALIGN="top">COPY </TD>
+<TD VALIGN="top">Sends a copy of the top 22 lines of
+display to the printer, if attached; otherwise does
+nothing. Note that COPY can not be used to print the
+automatic listings that appear on the screen.<BR>
+Report D if BREAK pressed </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DATA a1 , a2 , a3 , ...</TD>
+<TD VALIGN="top">Part of the DATA list. Must be in a
+program </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DEF FN a (a1 . . . ak )=e</TD>
+<TD VALIGN="top">User-defined function definition; must
+be in a program. Each of a and a1 to ak is either a
+single letter or a single letter followed by '$' for
+string argument or result.<BR>
+Takes the form DEF FN a()=e if no arguments </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DELETE f</TD>
+<TD VALIGN="top">Does not work without Microdrive, etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DIM a( n1 , . . . ,nk )</TD>
+<TD VALIGN="top">Deletes any array with the name a, and
+sets up an array a of numbers with k dimensions n1 , ...
+,nk. Initialises all the values to 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DIM a$( n1 , . . . ,nk )</TD>
+<TD VALIGN="top">Deletes any array or string with the
+name a$, and sets up an array of characters with k
+dimensions nl ,...,nk. Initialises all the values to
+&quot; &quot;. This can be considered as an array of
+strings of fixed length nk , with k-l dimensions
+nl,...,nk-l . Error 4 occurs if there is no room to fit
+the array in.<BR>
+An array is undefined until it is dimensioned in a DIM
+satement </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DRAW x,y</TD>
+<TD VALIGN="top">DRAW x,y,0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">DRAW x,y,z </TD>
+<TD VALIGN="top">Draws a line from the current plot
+position moving x horizontally and y vertically relative
+to it while turning through an angle z.<BR>
+Error B if it runs off the screen </TD>
+</TR>
+<TR>
+<TD VALIGN="top">ERASE</TD>
+<TD VALIGN="top">Does not work without Microdrive, etc. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">FLASH</TD>
+<TD VALIGN="top">Defines whether characters will be
+flashing or steady. n=0 for steady, n=l for flash, n=8
+for no change. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">FOR a=x TO y</TD>
+<TD VALIGN="top">FOR a=x TO y STEP 1 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">FOR a=x TO y STEP z</TD>
+<TD VALIGN="top">Deletes any simple variable a and sets
+up a control variable with value x, limit y, step z, and
+looping address referring to the statement after the FOR
+statement. Checks if the initial value is greater (if
+step&gt;=0) or less (if step&lt;0) than the limit, and if so then skips to statement NEXT a, giving error 1 if there is none. See NEXT.<BR> Error 4 occurs if there is
+no room for the control variable. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">FORMAT f</TD>
+<TD VALIGN="top">Does not work without the Microdrive,
+etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">GOSUB n</TD>
+<TD VALIGN="top">Pushes the line number of the GOSUB
+statement onto a stack; then as GO TO n.<BR>
+Error 4 can occur if there are not enough RETURNs </TD>
+</TR>
+<TR>
+<TD VALIGN="top">GO TO n</TD>
+<TD VALIGN="top">Jumps to line n (or, if there is none,
+the first line after that) </TD>
+</TR>
+<TR>
+<TD VALIGN="top">IF x THEN s</TD>
+<TD VALIGN="top">If x true (non-zero) then s is executed.
+Note that s comprises all the statements to the end of
+the line.<BR>
+The form 'IF x THEN line number' is not allowed. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">INK n</TD>
+<TD VALIGN="top">Sets the ink (foreground) colour of
+characters subsequently printed. n is in the range 0 to 7
+for a colour, n=8 for transparent or 9 for contrast. See
+The television screen - Appendix B.<BR>
+Error K if n not in the range 0 to 9. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">INPUT </TD>
+<TD VALIGN="top">The ' . . . ' is a sequence of INPUT
+items, separated as in a PRINT statement by commas,
+semicolons or apostrophes. An INPUT item can be: <OL TYPE="i">
+<LI>Any PRINT item not beginning with a letter </LI>
+<LI>A variable name, or </LI>
+<LI>LINE, then a string type variable name. </LI>
+</OL>
+<P>The PRINT items and separators in (i) are treated
+exactly as in PRINT, except that everything is printed in
+the lower part of the screen. </P>
+<P>For (ii) the computer stops and waits for input of an
+expression from the keyboard; the value of this is
+assigned to the variable. The input is echoed in the
+usual way and syntax errors give the flashing ?. For
+string type expressions, the input buffer is initialised
+to contain two string quotes (which can be erased if
+necessary). If the first character in the input is STOP,
+the program stops with error H. (iii) is like (ii) except
+that the input is treated as a string literal without
+quotes, and the STOP mechanism doesn't work; to stop it
+you must type <IMG SRC="crsrdown.gif" ALT="cursor down" WIDTH="10" HEIGHT="10"> instead. </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">INVERSE n</TD>
+<TD VALIGN="top">Controls inversion of characters
+subsequently printed.<BR>
+If n=0, characters are printed in normal video, as ink
+colour on paper colour.<BR>
+If n=1, characters are printed in inverse video, i.e.
+paper colour on ink colour. See The television screen -
+Appendix B.<BR>
+Error K if n is not 0 or 1 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LET v=e</TD>
+<TD VALIGN="top">Assigns the value of e to the variable
+v. LET cannot be omitted. A simple variable is undefined
+until it is assigned to in a LET, READ or INPUT
+statement. If v is a subscripted string variable, or a
+sliced string variable (substring), then the assignment
+is Procrustean (fixed length): the string value of e is
+either truncated or filled out with spaces on the right,
+to make it the same length as the variable v </TD>
+</TR>
+<TR> 
+<TD VALIGN="top">LIST</TD>
+<TD VALIGN="top">LIST 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LIST n</TD>
+<TD VALIGN="top">Lists the program to the upper part of
+the screen, starting at the first line whose number is at
+least n, and makes n the current line </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LLIST</TD>
+<TD VALIGN="top">LLIST 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LLIST n</TD>
+<TD VALIGN="top">Like LIST, but using the printer </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f</TD>
+<TD VALIGN="top">Loads program and variables </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f DATA()</TD>
+<TD VALIGN="top">Loads a numeric array </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f DATA $()</TD>
+<TD VALIGN="top">Loads character array $ </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f CODE m,n</TD>
+<TD VALIGN="top">Loads at most n bytes, starting at
+address m </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f CODE m</TD>
+<TD VALIGN="top">Loads bytes starting at address m </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f CODE</TD>
+<TD VALIGN="top">Loads bytes back to the address they
+were saved from. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LOAD f SCREEN$</TD>
+<TD VALIGN="top">LOAD f CODE 16384,6912. Searches for
+file of the right sort on cassette tape and loads it,
+deleting previous versions in memory. See Chapter 20 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">LPRINT</TD>
+<TD VALIGN="top">Like PRINT but using the printer </TD>
+</TR>
+<TR>
+<TD VALIGN="top">MERGE f</TD>
+<TD VALIGN="top">Like LOAD f. but does not delete old
+program lines and variables except to make way for new
+ones with the same line number or name. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">MOVE f1,f2 </TD>
+<TD VALIGN="top">Does not work without the Microdrive,
+etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">NEW</TD>
+<TD VALIGN="top">Starts the BASIC system off anew,
+deleting program and variables, and using the memory up
+to and including the byte whose address is in the system
+variable RAMBOT and preserves the system variables UDG, P
+RAMT, RASP and PIP </TD>
+</TR>
+<TR>
+<TD VALIGN="top">NEXT a</TD>
+<TD VALIGN="top"><OL>
+<LI>Finds the control variable </LI>
+<LI>Adds its step to its value </LI>
+<LI>If the step&gt;=0 and the value&gt;the limit; or
+if the step&lt;0 and the value&lt;the limit, then
+jumps to the looping statement. </LI>
+</OL>
+<P>Error 2 if there is no variable a<BR>
+Error 1 if there is one, but it's not a control variable</P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">OPEN #</TD>
+<TD VALIGN="top">Does not work without the Microdrive,
+etc </TD>
+</TR>
+<TR>
+<TD VALIGN="top">OUT m,n</TD>
+<TD VALIGN="top">Outputs byte n at port m at the
+processor level. (Loads the bc register pair with m, the
+a register with n, and does the assembly language
+instruction: out (c),a.) 0&lt;=m&lt;=65535,
+-255&lt;=n&lt;=255, else error B </TD>
+</TR>
+<TR>
+<TD VALIGN="top">OVER n</TD>
+<TD VALIGN="top">Controls overprinting for characters
+subsequently printed.<BR>
+If n=0, characters obliterate previous characters at that
+position.<BR>
+If n=l, then new characters are mixed in with old
+characters to give ink colour wherever either (but not
+both) had ink colour, and paper colour if they were both
+paper or both ink colour. See The television screen -
+Appendix B.<BR>
+Error K if n not 0 or 1 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">PAPER n</TD>
+<TD VALIGN="top">Like INK, but controlling the paper
+(background) colour </TD>
+</TR>
+<TR>
+<TD VALIGN="top">PAUSE n</TD>
+<TD VALIGN="top">Stops computing and displays the display
+file for n frames (at 50 frames per second or 60 frames
+per second in North America) or until a key is pressed.
+0&lt;=n&lt;=65535, else error B. If n=0 then the pause is
+not timed, but lasts until a key is pressed. </TD>
+</TR>
+<TR>
+<TD VALIGN="top">PLOT c;m,n</TD>
+<TD VALIGN="top">Prints an ink spot (subject to OVER and
+INVERSE) at the pixel (|m|, |n|); moves the PLOT
+position.<BR>
+Unless the colour items c specify otherwise, the ink
+colour at the character position containing the pixel is
+changed to the current permanent ink colour, and the
+other (paper colour, flashing and brightness) are left
+unchanged.<BR>
+0&lt;=|m|&lt;=255, 0&lt;=|n|&lt;=175, else error B </TD>
+</TR>
+<TR>
+<TD VALIGN="top">POKE m,n</TD>
+<TD VALIGN="top">Writes the value n to the byte in store
+with address m.<BR>
+0&lt;=m&lt;=65535, -255&lt;=n&lt;=255, else error B </TD>
+</TR>
+<TR>
+<TD VALIGN="top">PRINT </TD>
+<TD VALIGN="top">The ' . . . ' is a sequence of PRINT
+items, separated by commas , , semicolons ; or
+apostrophes ' and they are written to the display file
+for output to the television. <P>A semicolon ; between
+two items has no effect: it is used purely to separate
+the items. A comma , outputs the comma control character,
+and an apostrophe ' outputs the ENTER character. </P>
+<P>At the end of the PRINT statement, if it does not end
+in a semicolon, or comma, or apostrophe, an ENTER
+character is output. </P>
+<P>A PRINT item can be </P>
+<OL TYPE="i">
+<LI>empty, i.e. nothing. </LI>
+<LI>a numerical expression <P>First a minus sign is
+printed if the value is negative. Now let x be
+the modulus of value. </P>
+<P>If x&lt;=10<SUP>-5</SUP> or x&gt;=10<SUP>13</SUP>,
+then it is printed using scientific notation. The
+mantissa part has up to eight digits (with no
+trailing zeros), and the decimal point (absent if
+only one digit) is after the first. The exponent
+part is E, followed by + or -, followed by one or
+two digits. </P>
+<P>Otherwise x is printed in ordinary decimal
+notation with up to eight significant digits, and
+no trailing zeros after the decimal point. A
+decimal point right at the beginning is always
+followed by a zero, so for instance .03 and 0.3
+are printed as such. </P>
+<P>0 is printed as a single digit 0. </P>
+</LI>
+<LI>a string expression <P>The tokens in the string
+are expanded, possibly with a space before or
+after. </P>
+<P>Control characters have their control effect. </P>
+<P>Unrecognized characters print as ?. </P>
+</LI>
+<LI>AT m,n <P>Outputs an AT control character
+followed by a byte for m (the line number) and a
+byte for n (the column number). </P>
+</LI>
+<LI>TAB n <P>Outputs a TAB control character followed
+by two bytes for n (less significant byte first),
+the TAB stop. </P>
+</LI>
+<LI>A colour item, which takes the form of a PAPER,
+INK, FLASH, BRIGHT, INVERSE or OVER statement </LI>
+</OL>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">RANDOMIZE</TD>
+<TD VALIGN="top">RANDOMIZE 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RANDOMIZE n</TD>
+<TD VALIGN="top">Sets the system variable (called SEED)
+used to generate the next value of RND. If n<>0, SEED is
+given the value n; if n=0 then it is given the value of
+another system variable (called FRAMES) that counts the
+frames so far displayed on the television, and so should
+be fairly random. <P>RANDOMIZE appears as RAND on the
+keyboard. </P>
+<P>Error B occurs if n is not in the range 0 to 65535 </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">READ vl , v2 , . . . vk</TD>
+<TD VALIGN="top">Assigns to the variables using
+successive expressions in the DATA list. <P>Error C if an
+expression is the wrong type. </P>
+<P>Error E if there are variables left to be read when
+the DATA list is exhausted </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">REM . . . </TD>
+<TD VALIGN="top">No effect. ' . . . ' can be any sequence
+of characters except ENTER. This can include : , so no
+statements are possible after the REM statement on the
+same line </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RESTORE</TD>
+<TD VALIGN="top">RESTORE 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RESTORE n</TD>
+<TD VALIGN="top">Restores the DATA pointer to the first
+DATA statement in a line with number at least n: the next
+READ statement will start reading there </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RETURN</TD>
+<TD VALIGN="top">Takes a reference to a statement off the
+GO SUB stack, and jumps to the line after it. <P>Error 7
+occurs when there is no statement reference on the stack.
+There is some mistake in your program; GO SUBs are not
+properly balanced by RETURNs </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">RUN</TD>
+<TD VALIGN="top">RUN 0 </TD>
+</TR>
+<TR>
+<TD VALIGN="top">RUN n</TD>
+<TD VALIGN="top">CLEAR, and then GO TO n </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f</TD>
+<TD VALIGN="top">Saves the program and variables </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f LINE m</TD>
+<TD VALIGN="top">Saves the program and variables so that
+if they are loaded there is an automatic jump to line m </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f DATA()</TD>
+<TD VALIGN="top">Saves the numeric array </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f DATA$()</TD>
+<TD VALIGN="top">Saves the character array $ </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f CODE m,n</TD>
+<TD VALIGN="top">Saves n bytes starting at address m </TD>
+</TR>
+<TR>
+<TD VALIGN="top">SAVE f SCREEN$</TD>
+<TD VALIGN="top">SAVE f CODE 16384,6912. <P>Saves
+information on cassette, giving it the name f </P>
+<P>Error F if f is empty or has length eleven or more.
+See Chapter 20 </P>
+</TD>
+</TR>
+<TR>
+<TD VALIGN="top">STOP </TD>
+<TD VALIGN="top">Stops the program with report 9.
+CONTINUE will resume with the following statement </TD>
+</TR>
+<TR>
+<TD VALIGN="top">VERIFY</TD>
+<TD VALIGN="top">The same as LOAD except that the data is
+not loaded into RAM, but compared against what is already
+there. <P>Error R if one of the comparisons shows
+different bytes. </P>
+</TD>
+</TR>
+</TABLE>
+<H5 ALIGN="center"><A HREF="zxmanappb.html">[Back]</A>
+<A HREF="index.html">[Contents]</A> <A HREF="zxmanappd.html">[Next]</A>
+</H5>
+</BODY>
+</HTML>

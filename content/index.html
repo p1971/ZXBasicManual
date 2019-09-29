@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<TITLE>World of Spectrum - Documentation - ZX Spectrum manual</TITLE>
+</HEAD>
+<BODY>
+<H3><CENTER>SINCLAIR ZX SPECTRUM<BR>
+====================<BR>
+BASIC Programming<BR>
+-------------------------<BR>
+By Steven Vickers<BR>
+Edited by Robin Bradbeer<BR>
+Converted to ASCII text by<BR>
+Chris Owen<BR>
+(Internet email: <A HREF="/cdn-cgi/l/email-protection#7c1f133c120a1b5209121508521213"><span class="__cf_email__" data-cfemail="c1a2ae81afb7a6efb4afa8b5efafae">[email&#160;protected]</span></A>)<BR>
+-----------------------------<BR>
+Original edition published in 1982<BR>
+by Sinclair Research Limited<BR>
+This version published in 1995<BR>
+by Chris Owen on behalf of Amstrad plc <BR>
+------------------------------------------<BR>
+&copy; Amstrad plc 1995 - all rights reserved<BR>
+------------------------------------------<BR>
+This manual is freely distributable but must<BR>
+not be distributed without this notice.<BR>
+-----------------------------------------------<BR>
+HTML version by <A HREF="/cdn-cgi/l/email-protection#c5b5a0b1a085a8a4a1adacb5b5bceba6aaa8">Pete Robinson</A>.
+</CENTER></H3>
+<HR>
+<CENTER><H2>CONTENTS</H2></CENTER>
+<TABLE>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap1.html">Chapter1</A></TD><TD>Introduction<BR>A guide to the ZX Spectrum keyboard and a description of the display.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap2.html">Chapter 2</A></TD><TD>Basic programming concepts<BR>Programs, line numbers, editing programs using <IMG SRC="crsrdown.gif" WIDTH=10 HEIGHT=10 ALT="cursor down">, <IMG SRC="crsrup.gif" WIDTH=10 HEIGHT=10 ALT="cursor up"> and <B>EDIT</B>, <B>RUN</B>, <B>LIST</B>, <B>GO TO</B>, <B>CONTINUE</B>, <B>INPUT</B>, <B>NEW</B>, <B>REM</B>, <B>PRINT</B>, <B>STOP</B> in <B>INPUT</B> data, <B>BREAK</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap3.html">Chapter 3</A></TD><TD>Decisions<BR><B>IF</B>, <B>STOP</B>, =, &lt;, &gt;, &lt;=, &gt;=, &lt;&gt;</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap4.html">Chapter 4</A></TD><TD>Looping<BR><B>FOR</B>, <B>NEXT</B>, <B>TO</B>, <B>STEP</B>. Introducing <B>FOR-NEXT</B> loops</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap5.html">Chapter 5</A></TD><TD>Subroutines<BR><B>GO SUB</B>, <B>RETURN</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap6.html">Chapter 6</A></TD><TD><B>READ</B>, <B>DATA</B>, <B>RESTORE</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap7.html">Chapter 7</A></TD><TD>Expressions<BR>Mathematical expressions using +, -, *, /, scientific notation and variable names.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap8.html">Chapter 8</A></TD><TD>Strings<BR>Handling strings and slicing.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap9.html">Chapter 9</A></TD><TD>Functions<BR>User-definable functions and others readily available on the ZX Spectrum using <B>DEF</B>, <B>LEN</B>, <B>STR$</B>, <B>VAL</B>, <B>SGN</B>, <B>ABS</B>, <B>INT</B>, <B>SQR</B>, <B>FN</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap10.html">Chapter 10</A></TD><TD>Mathematical functions<BR>Including simple trigonometry: <IMG SRC="./crsrup.gif">, <B>PI</B>, <B>EXP</B>, <B>LN</B>, <B>SIN</B>, <B>COS</B>, <B>TAN</B>, <B>ASN</B>, <B>ACS</B>, <B>ATN</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap11.html">Chapter 11</A></TD><TD>Random numbers<BR>Using <B>RANDOMIZE</B> and <B>RND</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap12.html">Chapter 12</A></TD><TD>Arrays<BR>Strings and numeric arrays - <B>DIM</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap13.html">Chapter 13</A></TD><TD>Conditions<BR>Logical expressions: <B>AND</B>, <B>OR</B>, <B>NOT</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap14.html">Chapter 14</A></TD><TD>The character set<BR>A look at the ZX character set including graphics and how to construct your own graphic characters: <B>CODE</B>, <B>CHR$</B>, <B>POKE</B>, <B>PEEK</B>, <B>USR</B>, <B>BIN</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap15.html">Chapter 15</A></TD><TD>More about <B>PRINT</B> and <B>INPUT</B><BR>Some more complicated uses of these commands using separators: <B>,;'</B> , <B>TAB</B>, <B>AT</B>, <B>LINE</B> and <B>CLS</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap16.html">Chapter 16</A></TD><TD>Colours<BR><B>INK</B>, <B>PAPER</B>, <B>FLASH</B>, <B>BRIGHT</B>, <B>INVERSE</B>, <B>OVER</B>, <B>BORDER</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap17.html">Chapter 17</A></TD><TD>Graphics<BR><B>PLOT</B>, <B>DRAW</B>, <B>CIRCLE</B>, <B>POINT</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap18.html">Chapter 18</A></TD><TD>Motion<BR>Animated graphics using <B>PAUSE</B>, <B>INKEY$</B> and <B>PEEK</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap19.html">Chapter 19</A></TD><TD>BEEP<BR>The sound capabilities of the ZX Spectrum using <B>BEEP</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap20.html">Chapter 20</A></TD><TD>Tape Storage<BR>How to store your programs on cassette tape: <B>SAVE</B>, <B>LOAD</B>, <B>VERIFY</B>, <B>MERGE</B>.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap21.html">Chapter 21</A></TD><TD>The ZX Printer<BR><B>LLIST</B>, <B>LPRINT</B>, <B>COPY</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap22.html">Chapter 22</A></TD><TD>Other equipment<BR>Connecting the ZX Spectrum to other machines and devices.</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap23.html">Chapter 23</A></TD><TD>IN and OUT<BR>Input/Output ports and their uses: <B>IN</B>, <B>OUT</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap24.html">Chapter 24</A></TD><TD>The memory<BR>A look at the internal workings of the ZX Spectrum: <B>CLEAR</B></TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap25.html">Chapter 25</A></TD><TD>The system variables</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanchap26.html">Chapter 26</A></TD><TD>Using machine code<BR>Introducing USR with a numeric argument</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanappa.html">APPENDIX A</A></TD><TD>The character set</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanappb.html">APPENDIX B</A></TD><TD>Reports</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanappc.html">APPENDIX C</A></TD><TD>A description of the ZX Spectrum for reference</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanappd.html">APPENDIX D</A></TD><TD>Example programs</TD></TR>
+<TR><TD VALIGN=TOP><A HREF="./zxmanappe.html">APPENDIX E</A></TD><TD>Binary and hexadecimal</TD></TR>
+</TABLE>
+<BR>
+<H5><CENTER>
+<A HREF="zxmanchap1.html">[Next]</A>
+</CENTER></H5>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></BODY>
+</HTML>
